@@ -3,21 +3,14 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import reduxNotificationsFactory from 'factories/reduxNotificationsFactory';
 import notificationFactory from 'factories/notificationFactory';
-import StyledNotification from 'components/Notification';
 import * as notificationsActionCreators from 'redux/actions';
 
 const Notification = props => (
-  <StyledNotification
-    notificationHeight={props.notificationHeight}
-    isVisible={props.isVisible}
-    animatedMargin={props.animatedMargin}
-    animationDuration={props.animationDuration}
-    animationEasing={props.animationEasing}
-  >
+  <div>
     <div>Next</div>
     <button onClick={props.hideNotification}>line two</button>
     <button onClick={props.hideNotification}>line two</button>
-  </StyledNotification>
+  </div>
 );
 
 const TestNotification = notificationFactory(Notification);

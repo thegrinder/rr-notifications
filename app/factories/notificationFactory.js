@@ -3,6 +3,7 @@ import { func, string, bool } from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { hideNotification } from 'redux/actions';
+import Notification from 'components/Notification';
 
 export default function notificationFactory(WrappedNotification) {
   const propTypes = {
@@ -12,7 +13,7 @@ export default function notificationFactory(WrappedNotification) {
     animationDuration: string.isRequired,
   };
 
-  class Notification extends Component {
+  class NotificationContainer extends Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -31,23 +32,30 @@ export default function notificationFactory(WrappedNotification) {
     render() {
       return (
         <div ref={(notification) => { this.notification = notification; }}>
-          <WrappedNotification
+          <Notification
             animatedMargin={this.props.animatedMargin}
             notificationHeight={this.state.height}
             hideNotification={this.handleHidingNotification}
             isVisible={this.props.isVisible}
             animationDuration={this.props.animationDuration}
             animationEasing={this.props.animationEasing}
-          />
+          >
+            <WrappedNotification
+              notificationHeight={this.state.height}
+              hideNotification={this.handleHidingNotification}
+              isVisible={this.props.isVisible}
+              animationDuration={this.props.animationDuration}
+            />
+          </Notification>
         </div>
       );
     }
   }
 
-  Notification.propTypes = propTypes;
+  NotificationContainer.propTypes = propTypes;
 
   function mapStateToProps({ notifications }, props) {
-    const { isVisible } = notifications.find(x => x.uid === props.uid);
+    const { isVisible } = notifications.find(notification => notification.uid === props.uid);
     return {
       isVisible,
     };
@@ -56,5 +64,5 @@ export default function notificationFactory(WrappedNotification) {
   return connect(
     mapStateToProps,
     dispatch => bindActionCreators({ hideNotification }, dispatch),
-  )(Notification);
+  )(NotificationContainer);
 }
