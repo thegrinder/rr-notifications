@@ -3,9 +3,6 @@ import { oneOf, number, bool, string } from 'prop-types';
 import getAnimation from 'animations/animations';
 
 const Notification = styled.div`
-  padding: 10px;
-  background-color: #ddd;
-  color: #fff;
   animation: ${props => getAnimation(props)};
   animation-timing-function: ${props => props.animationEasing};
   animation-duration: ${props => props.animationDuration};
