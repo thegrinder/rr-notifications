@@ -11,10 +11,9 @@ const Notification = props => (
   <StyledNotification
     notificationHeight={props.notificationHeight}
     isVisible={props.isVisible}
-    index={props.index}
     animatedMargin={props.animatedMargin}
   >
-    <div>{props.index}</div>
+    <div>Next</div>
     <button onClick={props.hideNotification}>line two</button>
     <button onClick={props.hideNotification}>line two</button>
   </StyledNotification>

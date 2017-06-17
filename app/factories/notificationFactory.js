@@ -33,7 +33,6 @@ export default function notificationFactory(WrappedNotification) {
             notificationHeight={this.state.height}
             hideNotification={this.handleHidingNotification}
             isVisible={this.props.isVisible}
-            index={this.props.index}
           />
         </div>
       );

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 export default function containerFactory(WrappedContainer, WrappedNotification, options = {}) {
   const defaultOptions = {
-    position: ['auto', 'auto', '40px', '40px'],
+    position: ['40px', '40px', 'auto', 'auto'],
     stackNextOn: 'top',
   };
   const mergedOptions = {
@@ -23,12 +23,11 @@ export default function containerFactory(WrappedContainer, WrappedNotification, 
           position={mergedOptions.position}
           stackNextOn={mergedOptions.stackNextOn}
         >
-          {this.props.notifications.map((notification, index) => (
+          {this.props.notifications.map(notification => (
             <WrappedNotification
               animatedMargin={mergedOptions.position[0] === 'auto' ? 'bottom' : 'top'}
               key={notification.uid}
               uid={notification.uid}
-              index={index}
               stackNextOn={mergedOptions}
             />
           ))}

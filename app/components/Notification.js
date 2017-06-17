@@ -36,7 +36,7 @@ const Notification = styled.div`
       ? show(props.notificationHeight, props.animatedMargin)
       : hide(props.notificationHeight, props.animatedMargin)
   )} .4s forwards;
-  z-index: ${props => 999999 - props.index};
+  z-index: ${props => (props.isVisible ? 999999 : -1)};
   position: relative;
 `;
 
@@ -44,7 +44,6 @@ Notification.propTypes = {
   isVisible: bool.isRequired,
   notificationHeight: number.isRequired,
   animatedMargin: oneOf(['bottom', 'top']).isRequired,
-  index: number.isRequired,
 };
 
 export default Notification;
