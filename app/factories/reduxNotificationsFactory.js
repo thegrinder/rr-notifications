@@ -6,9 +6,10 @@ import Container from 'components/Container';
 export default function reduxNotificationsFactory(WrappedNotification, options = {}) {
   const defaultOptions = {
     position: ['40px', '40px', 'auto', 'auto'],
-    stackNextOn: 'top',
+    stackNextOn: 'bottom',
     animationDuration: '.4s',
     animationEasing: 'ease',
+    slideFromSide: 'right',
   };
   const mergedOptions = {
     ...defaultOptions,
@@ -30,6 +31,7 @@ export default function reduxNotificationsFactory(WrappedNotification, options =
               uid={notification.uid}
               animationDuration={mergedOptions.animationDuration}
               animationEasing={mergedOptions.animationEasing}
+              slideFromSide={mergedOptions.slideFromSide}
             />
           ))}
         </Container>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { func, string, bool } from 'prop-types';
+import { func, string, bool, oneOf } from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { hideNotification } from 'redux/actions';
@@ -11,6 +11,7 @@ export default function notificationFactory(WrappedNotification) {
     animatedMargin: string.isRequired,
     isVisible: bool.isRequired,
     animationDuration: string.isRequired,
+    slideFromSide: oneOf(['left', 'right']),
   };
 
   class NotificationContainer extends Component {
@@ -39,6 +40,7 @@ export default function notificationFactory(WrappedNotification) {
             isVisible={this.props.isVisible}
             animationDuration={this.props.animationDuration}
             animationEasing={this.props.animationEasing}
+            slideFromSide={this.props.slideFromSide}
           >
             <WrappedNotification
               notificationHeight={this.state.height}
