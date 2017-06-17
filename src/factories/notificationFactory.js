@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { func, string, bool, oneOf } from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { hideNotification } from 'redux/actions';
-import Notification from 'components/Notification';
+import { hideNotification } from '../redux/actions';
+import Notification from '../components/Notification';
 
 export default function notificationFactory(WrappedNotification) {
   const propTypes = {

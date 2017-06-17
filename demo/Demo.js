@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import reduxNotificationsFactory from 'factories/reduxNotificationsFactory';
-import notificationFactory from 'factories/notificationFactory';
-import * as notificationsActionCreators from 'redux/actions';
+import { actions, notificationFactory, reduxNotificationsFactory } from './../src/index';
 
 const Notification = props => (
   <div>
@@ -15,7 +13,7 @@ const Notification = props => (
 const TestNotification = notificationFactory(Notification);
 const TestNotifications = reduxNotificationsFactory(TestNotification);
 
-class App extends Component {
+class Demo extends Component {
   render() {
     return (
       <div>
@@ -26,7 +24,4 @@ class App extends Component {
   }
 }
 
-export default connect(
-  state => state,
-  dispatch => bindActionCreators(notificationsActionCreators, dispatch),
-)(App);
+export default connect(undefined, dispatch => bindActionCreators(actions, dispatch))(Demo);

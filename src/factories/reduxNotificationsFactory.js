@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { array } from 'prop-types';
 import { connect } from 'react-redux';
-import Container from 'components/Container';
+import Container from '../components/Container';
 
 export default function reduxNotificationsFactory(WrappedNotification, options = {}) {
   const defaultOptions = {
