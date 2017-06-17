@@ -7,9 +7,8 @@ import * as notificationsActionCreators from 'redux/actions';
 
 const Notification = props => (
   <div>
-    <div>Next</div>
-    <button onClick={props.hideNotification}>line two</button>
-    <button onClick={props.hideNotification}>line two</button>
+    <div>Notification</div>
+    <button onClick={props.hideNotification}>Click to close</button>
   </div>
 );
 

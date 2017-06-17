@@ -1,29 +1,29 @@
 import path from 'path';
 
 export const PATHS = {
-  app: path.join(__dirname, '..', 'app'),
+  src: path.join(__dirname, '..', 'src'),
   build: path.join(__dirname, '..', 'dist'),
 };
 
 export const baseHtmlPluginConfig = {
-  template: path.join(__dirname + '/../app/index.html'),
+  template: path.join(__dirname + '/../src/index.html'),
   filename: 'index.html',
   inject: 'body',
 };
 
 export const baseConfig = {
   entry: [
-    PATHS.app,
+    PATHS.src,
   ],
   resolve: {
-    modules: [ path.resolve(__dirname, PATHS.app), 'node_modules' ]
+    modules: [ path.resolve(__dirname, PATHS.src), 'node_modules' ]
   },
   output: {
     path: PATHS.build,
     filename: 'index_bundle.js',
     publicPath: '/',
   },
-  context: PATHS.app,
+  context: PATHS.src,
   module: {
     rules: [
       { test: /\.(js)$/, use: 'babel-loader' },
