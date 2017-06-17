@@ -1,0 +1,25 @@
+{
+  parser: "babel-eslint",
+  env: {
+    es6: true,
+    browser: true
+  },
+  extends: "airbnb-base",
+  plugins: ["react"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["app"]
+      }
+    }
+  }
+}
