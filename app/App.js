@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import containerFactory from 'factories/containerFactory';
+import reduxNotificationsFactory from 'factories/reduxNotificationsFactory';
 import notificationFactory from 'factories/notificationFactory';
-import Container from 'components/Container';
 import StyledNotification from 'components/Notification';
 import * as notificationsActionCreators from 'redux/actions';
 
@@ -20,7 +19,7 @@ const Notification = props => (
 );
 
 const TestNotification = notificationFactory(Notification);
-const TestNotifications = containerFactory(Container, TestNotification);
+const TestNotifications = reduxNotificationsFactory(TestNotification);
 
 class App extends Component {
   render() {

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { array } from 'prop-types';
 import { connect } from 'react-redux';
+import Container from 'components/Container';
 
-export default function containerFactory(WrappedContainer, WrappedNotification, options = {}) {
+export default function reduxNotificationsFactory(WrappedNotification, options = {}) {
   const defaultOptions = {
     position: ['40px', '40px', 'auto', 'auto'],
     stackNextOn: 'top',
@@ -16,13 +17,10 @@ export default function containerFactory(WrappedContainer, WrappedNotification, 
     notifications: array.isRequired,
   };
 
-  class Container extends Component {
+  class Notifications extends Component {
     render() {
       return (
-        <WrappedContainer
-          position={mergedOptions.position}
-          stackNextOn={mergedOptions.stackNextOn}
-        >
+        <Container position={mergedOptions.position} stackNextOn={mergedOptions.stackNextOn}>
           {this.props.notifications.map(notification => (
             <WrappedNotification
               animatedMargin={mergedOptions.position[0] === 'auto' ? 'bottom' : 'top'}
@@ -31,12 +29,12 @@ export default function containerFactory(WrappedContainer, WrappedNotification, 
               stackNextOn={mergedOptions}
             />
           ))}
-        </WrappedContainer>
+        </Container>
       );
     }
   }
 
-  Container.propTypes = propTypes;
+  Notifications.propTypes = propTypes;
 
-  return connect(({ notifications }) => ({ notifications }))(Container);
+  return connect(({ notifications }) => ({ notifications }))(Notifications);
 }

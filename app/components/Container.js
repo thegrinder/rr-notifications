@@ -5,6 +5,7 @@ import { array, string } from 'prop-types';
 const Container = styled.div`
   position: fixed;
   display: flex;
+  z-index: 999999;
   flex-direction: ${props => (props.stackNextOn === 'top' ? 'column-reverse' : 'column')};
   ${props => position(...props.position)}
 `;
