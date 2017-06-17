@@ -2,7 +2,15 @@ import React, { Component } from 'react';
 import { array } from 'prop-types';
 import { connect } from 'react-redux';
 
-export default function containerFactory(WrappedContainer, WrappedNotification) {
+export default function containerFactory(WrappedContainer, WrappedNotification, options) {
+  const defaultOptions = {
+    position: ['40px', '40px', 'auto', 'auto'],
+  };
+  const mergedOptions = {
+    ...defaultOptions,
+    options,
+  };
+
   const propTypes = {
     notifications: array.isRequired,
   };
@@ -10,7 +18,7 @@ export default function containerFactory(WrappedContainer, WrappedNotification) 
   class Container extends Component {
     render() {
       return (
-        <WrappedContainer>
+        <WrappedContainer position={mergedOptions.position}>
           {this.props.notifications.map((notification, index) => (
             <WrappedNotification
               key={notification.uid}

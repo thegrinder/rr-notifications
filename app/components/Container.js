@@ -1,12 +1,16 @@
 import styled from 'styled-components';
+import { position } from 'polished';
+import { array } from 'prop-types';
 
 const Container = styled.div`
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 200px;
   display: flex;
+  ${props => position(...props.position)}
   flex-direction: column-reverse;
 `;
+
+Container.propTypes = {
+  position: array.isRequired,
+};
 
 export default Container;
