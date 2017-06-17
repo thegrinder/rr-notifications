@@ -9,11 +9,12 @@ import * as notificationsActionCreators from 'redux/actions';
 
 const Notification = props => (
   <StyledNotification
-    test={props.notificationHeight}
+    notificationHeight={props.notificationHeight}
     isVisible={props.isVisible}
     index={props.index}
+    animatedMargin={props.animatedMargin}
   >
-    <div>line one</div>
+    <div>{props.index}</div>
     <button onClick={props.hideNotification}>line two</button>
     <button onClick={props.hideNotification}>line two</button>
   </StyledNotification>

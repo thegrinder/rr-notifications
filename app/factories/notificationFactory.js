@@ -29,6 +29,7 @@ export default function notificationFactory(WrappedNotification) {
       return (
         <div ref={(notification) => { this.notification = notification; }}>
           <WrappedNotification
+            animatedMargin={this.props.animatedMargin}
             notificationHeight={this.state.height}
             hideNotification={this.handleHidingNotification}
             isVisible={this.props.isVisible}
