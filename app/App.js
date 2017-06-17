@@ -11,6 +11,8 @@ const Notification = props => (
     notificationHeight={props.notificationHeight}
     isVisible={props.isVisible}
     animatedMargin={props.animatedMargin}
+    animationDuration={props.animationDuration}
+    animationEasing={props.animationEasing}
   >
     <div>Next</div>
     <button onClick={props.hideNotification}>line two</button>

@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { oneOf, number, bool } from 'prop-types';
+import { oneOf, number, bool, string } from 'prop-types';
 
 const show = (height, animatedMargin) => (
   keyframes`
@@ -35,7 +35,10 @@ const Notification = styled.div`
     props.isVisible
       ? show(props.notificationHeight, props.animatedMargin)
       : hide(props.notificationHeight, props.animatedMargin)
-  )} .4s forwards;
+  )};
+  animation-timing-function: ${props => props.animationEasing};
+  animation-duration: ${props => props.animationDuration};
+  animation-fill-mode: forwards;
   z-index: ${props => (props.isVisible ? 999999 : -1)};
   position: relative;
 `;
@@ -44,6 +47,8 @@ Notification.propTypes = {
   isVisible: bool.isRequired,
   notificationHeight: number.isRequired,
   animatedMargin: oneOf(['bottom', 'top']).isRequired,
+  animationDuration: string.isRequired,
+  animationEasing: string.isRequired,
 };
 
 export default Notification;

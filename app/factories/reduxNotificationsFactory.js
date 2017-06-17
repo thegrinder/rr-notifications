@@ -7,6 +7,8 @@ export default function reduxNotificationsFactory(WrappedNotification, options =
   const defaultOptions = {
     position: ['40px', '40px', 'auto', 'auto'],
     stackNextOn: 'top',
+    animationDuration: '.4s',
+    animationEasing: 'ease',
   };
   const mergedOptions = {
     ...defaultOptions,
@@ -26,7 +28,8 @@ export default function reduxNotificationsFactory(WrappedNotification, options =
               animatedMargin={mergedOptions.position[0] === 'auto' ? 'bottom' : 'top'}
               key={notification.uid}
               uid={notification.uid}
-              stackNextOn={mergedOptions}
+              animationDuration={mergedOptions.animationDuration}
+              animationEasing={mergedOptions.animationEasing}
             />
           ))}
         </Container>

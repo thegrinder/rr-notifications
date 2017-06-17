@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { func } from 'prop-types';
+import { func, string, bool } from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { hideNotification } from 'redux/actions';
@@ -7,6 +7,9 @@ import { hideNotification } from 'redux/actions';
 export default function notificationFactory(WrappedNotification) {
   const propTypes = {
     hideNotification: func.isRequired,
+    animatedMargin: string.isRequired,
+    isVisible: bool.isRequired,
+    animationDuration: string.isRequired,
   };
 
   class Notification extends Component {
@@ -33,6 +36,8 @@ export default function notificationFactory(WrappedNotification) {
             notificationHeight={this.state.height}
             hideNotification={this.handleHidingNotification}
             isVisible={this.props.isVisible}
+            animationDuration={this.props.animationDuration}
+            animationEasing={this.props.animationEasing}
           />
         </div>
       );
