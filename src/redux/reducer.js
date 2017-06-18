@@ -8,9 +8,8 @@ export default function notifications(state = initialState, action) {
     case RN_SHOW_NOTIFICATION :
       return state.concat({
         uid: Date.now(),
-        status: action.status,
         isVisible: true,
-        ...action.opts,
+        options: action.options,
       });
     case RN_HIDE_NOTIFICATION :
       return state.map((notification) => {

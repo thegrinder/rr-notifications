@@ -21,6 +21,7 @@ notificationFactory is a higher order function that accepts your custom Notifica
 
 Props | Types | Description
 :-----|:-----:|:-----------
+options | object | Custom data passed to the notification (see action creators section)
 notificationHeight | number | Dynamically obtained height of the notification
 isVisible | boolean | Whether the notification is visible. The initial value for a new notification is `true`. That's why if you want a custom animation, use css keyframes that let you define initial animation state
 animationDuration | string | Animation duration passed down from the reduxNotificationsFactory options
@@ -33,9 +34,10 @@ import { notificationFactory } from 'rr-notifications';
 
 const YourCustomNotification = (props) => (
   // props available thanks to wrapping the component
-  const { notificationHeight, isVisible, animationDuration, hideNotification } = props;
+  const { options, notificationHeight, isVisible,
+    animationDuration, hideNotification } = props;
   <div>
-    <div>Notification</div>
+    <div></div>
     <button onClick={hideNotification}>Click to close</button>
   </div>
 );
@@ -93,4 +95,4 @@ class App extends Component {
 
 ## redux action creators
 
-There are two different actions creators available to you. `showNotification` takes an options object that is available to you inside your notification under `props.options`, and fires a notification. `hideAllNotifications` takes no argument and closes all of the notifications.
+There are two different actions creators available to you. `showNotification` takes an options object that is available to you inside your notification under `props.options`. You can pass all the necessary content and type (warning, danger, etc.) in that object. `hideAllNotifications` takes no argument and closes all of the notifications.
