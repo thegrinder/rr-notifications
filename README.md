@@ -1,7 +1,19 @@
 # rr-notifications
 
-## Basic usage
+## reducer
 
+Import the reducer and pass it to the store.
+
+``` javascript
+import {createStore, combineReducers} from 'redux';
+import {reducer as notifications} from 'rr-notifications';
+
+const store = createStore(combineReducers({
+  notifications,
+}));
+
+export store;
+```
 
 ## notificationFactory
 
@@ -79,3 +91,6 @@ class App extends Component {
 
 ```
 
+## redux action creators
+
+There are two different actions creators available to you. `showNotification` takes an options object that is available to you inside your notification under `props.options`, and fires a notification. `hideAllNotifications` takes no argument and closes all of the notifications.
