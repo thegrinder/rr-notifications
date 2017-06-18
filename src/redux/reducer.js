@@ -22,6 +22,10 @@ export default function notifications(state = initialState, action) {
         return notification;
       });
     case RN_HIDE_ALL_NOTIFICATIONS :
+      return state.map(notification => ({
+        ...notification,
+        isVisible: false,
+      }));
     default :
       return state;
   }

@@ -18,9 +18,9 @@ const TestNotifications = rrContainerFactory(TestNotification);
 class Demo extends Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleShow = this.handleShow.bind(this);
   }
-  handleClick() {
+  handleShow() {
     this.props.showNotification({
       type: 'warning',
       text: 'This is a warning',
@@ -29,9 +29,8 @@ class Demo extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.handleClick}>
-          Add notification
-        </button>
+        <button onClick={this.handleShow}>{'Add notification'}</button>
+        <button onClick={this.props.hideAllNotifications}>{'Hide all'}</button>
         <TestNotifications/>
       </div>
     );
