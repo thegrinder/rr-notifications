@@ -59,7 +59,9 @@ export default function notificationFactory(WrappedNotification) {
   NotificationContainer.propTypes = propTypes;
 
   function mapStateToProps({ notifications }, props) {
-    const { isVisible, options } = notifications.find(notification => notification.uid === props.uid);
+    const { isVisible, options } = notifications.find(notification => (
+      notification.uid === props.uid
+    ));
     return {
       isVisible,
       options,

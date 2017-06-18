@@ -15,22 +15,22 @@ const store = createStore(combineReducers({
 export store;
 ```
 
-## notificationFactory
+## rrNotificationFactory
 
-notificationFactory is a higher order function that accepts your custom Notification component and makes the following props available to it.
+rrNotificationFactory is a higher order function that accepts your custom Notification component and makes the following props available to it.
 
 Props | Types | Description
 :-----|:-----:|:-----------
 options | object | Custom data passed to the notification (see action creators section)
 notificationHeight | number | Dynamically obtained height of the notification
 isVisible | boolean | Whether the notification is visible. The initial value for a new notification is `true`. That's why if you want a custom animation, use css keyframes that let you define initial animation state
-animationDuration | string | Animation duration passed down from the reduxNotificationsFactory options
+animationDuration | string | Animation duration passed down from the rrContainerFactory options
 hideNotification | function | Function enabling you to close the current notification
 
 ### Example
 
-```js
-import { notificationFactory } from 'rr-notifications';
+``` javascript
+import { rrNotificationFactory } from 'rr-notifications';
 
 const YourCustomNotification = (props) => (
   // props available thanks to wrapping the component
@@ -42,14 +42,14 @@ const YourCustomNotification = (props) => (
   </div>
 );
 
-export default notificationFactory(YourCustomNotification);
+export default rrNotificationFactory(YourCustomNotification);
 ```
 
 
-## reduxNotificationsFactory
+## rrContainerFactory
 
 
-reduxNotificationsFactory is a higher order function that accepts a wrapped Notification component (see above) and a number of options. It creates a container for the notifications according to the options you pass.
+rrContainerFactory is a higher order function that accepts a wrapped Notification component (see above) and a number of options. It creates a container for the notifications according to the options you pass.
 
 ### Options
 
@@ -63,14 +63,14 @@ animationEasing | string | 'ease' | no | Animation timing function / cubic-bezie
 
 ### Example
 
-```js
+``` javascript
 // App.js - root component
 
-import { reduxNotificationsFactory } from 'rr-notifications';
+import { rrContainerFactory } from 'rr-notifications';
 // import your wrapped custom notification component - see notificationFactory section
 import WrappedNotification from './components/YourCustomNotification';
 
-const Notifications = reduxNotificationsFactory(WrappedNotification, {
+const Notifications = rrContainerFactory(WrappedNotification, {
   position: ['auto', 'auto', '40px', '40px'],
     stackNextOn: 'bottom',
     slideFromSide: 'left',

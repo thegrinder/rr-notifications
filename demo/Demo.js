@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { actions, notificationFactory, reduxNotificationsFactory } from './../src/index';
+import { actions, rrNotificationFactory, rrContainerFactory } from './../src/index';
 
 const Notification = ({options: { type, text }, hideNotification }) => {
   return (
@@ -12,8 +12,8 @@ const Notification = ({options: { type, text }, hideNotification }) => {
   );
 };
 
-const TestNotification = notificationFactory(Notification);
-const TestNotifications = reduxNotificationsFactory(TestNotification);
+const TestNotification = rrNotificationFactory(Notification);
+const TestNotifications = rrContainerFactory(TestNotification);
 
 class Demo extends Component {
   constructor(props) {

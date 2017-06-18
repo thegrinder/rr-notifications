@@ -1,11 +1,11 @@
 import reducer from './redux/reducer';
 import * as actions from './redux/actions';
-import notificationFactory from './factories/notificationFactory';
-import reduxNotificationsFactory from './factories/reduxNotificationsFactory';
+import rrNotificationFactory from './factories/rrNotificationFactory';
+import rrContainerFactory from './factories/rrContainerFactory';
 
 export {
   reducer,
   actions,
-  notificationFactory,
-  reduxNotificationsFactory,
-}
+  rrNotificationFactory,
+  rrContainerFactory,
+};
