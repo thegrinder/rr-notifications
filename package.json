@@ -1,6 +1,6 @@
 {
   "name": "rr-notifications",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Flexible redux system notification",
   "main": "./dist/index.js",
   "scripts": {
