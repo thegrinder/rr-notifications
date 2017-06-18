@@ -1,7 +1,18 @@
 {
   "name": "rr-notifications",
   "version": "0.1.0",
-  "description": "Flexible redux system notification",
+  "description": "Flexible react-redux notification system",
+  "keywords": [
+    "react",
+    "redux",
+    "styled-components",
+    "notifications"
+  ],
+  "homepage": "https://github.com/thegrinder/rr-notifications",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thegrinder/rr-notifications.git"
+  },
   "main": "./dist/index.js",
   "scripts": {
     "start": "webpack-dev-server --config config/webpack.dev.babel.js",
@@ -9,8 +20,8 @@
     "lint": "eslint app/.; exit 0",
     "fix": "eslint --fix app/.; exit 0"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Pawel Szczepkowski",
+  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-eslint": "^7.2.3",
@@ -26,13 +37,13 @@
     "webpack-dev-server": "^2.4.5",
     "react-hot-loader": "^3.0.0-beta.7",
     "html-webpack-plugin": "^2.28.0",
-    "babel-preset-env": "^1.5.1"
+    "babel-preset-env": "^1.5.1",
+    "react-dom": "^15.5.4"
   },
   "dependencies": {
     "polished": "^1.1.3",
     "prop-types": "^15.5.10",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4",
     "react-redux": "^5.0.5",
     "redux": "^3.6.0",
     "styled-components": "^2.0.0",
