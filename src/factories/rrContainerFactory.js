@@ -7,13 +7,10 @@ export default function rrContainerFactory(WrappedNotification, options = {}) {
   const defaultOptions = {
     position: ['40px', '40px', 'auto', 'auto'],
     stackNextOn: 'bottom',
-    animationDuration: '.4s',
-    animationEasing: 'ease',
-    slideFromSide: 'right',
   };
   const mergedOptions = {
     ...defaultOptions,
-    options,
+    ...options,
   };
 
   const propTypes = {
@@ -29,9 +26,6 @@ export default function rrContainerFactory(WrappedNotification, options = {}) {
               animatedMargin={mergedOptions.position[0] === 'auto' ? 'bottom' : 'top'}
               key={notification.uid}
               uid={notification.uid}
-              animationDuration={mergedOptions.animationDuration}
-              animationEasing={mergedOptions.animationEasing}
-              slideFromSide={mergedOptions.slideFromSide}
             />
           ))}
         </Container>

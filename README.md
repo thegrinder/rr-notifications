@@ -17,7 +17,19 @@ export store;
 
 ## rrNotificationFactory
 
-rrNotificationFactory is a higher order function that accepts your custom Notification component and makes the following props available to it.
+rrNotificationFactory is a higher order function that accepts your custom Notification component and a number of options.
+
+### Options
+
+Property    | Type   | Default   | Required | Description
+:-----------|:------:|:---------:|:--------:|:----------------------------------------
+slideFromSide | 'right', 'left' | 'right' | no | Horizontal direction which notification appears from
+animationDuration | string | '.4s' | no | Duration of the show and hide animation
+animationEasing | string | 'ease' | no | Animation timing function / cubic-bezier
+
+### Props
+
+Thanks to rrNotificationFactory, your wrapped component has access to the following props:
 
 Props | Types | Description
 :-----|:-----:|:-----------
@@ -49,7 +61,7 @@ export default rrNotificationFactory(YourCustomNotification);
 ## rrContainerFactory
 
 
-rrContainerFactory is a higher order function that accepts a wrapped Notification component (see above) and a number of options. It creates a container for the notifications according to the options you pass.
+rrContainerFactory is a higher order function that accepts a wrapped Notification component (see above) and a couple of options. It creates a container for the notifications according to the options you pass.
 
 ### Options
 
@@ -57,9 +69,6 @@ Property    | Type   | Default   | Required | Description
 :-----------|:------:|:---------:|:--------:|:----------------------------------------
 position | array | ['40px', '40px', 'auto', 'auto'] | no | Fixed position where notifications are displayed
 stackNextOn | 'bottom', 'top' | 'top' | no | Position of the new notification in the stack
-slideFromSide | 'right', 'left' | 'right' | no | Horizontal direction which notification appears from
-animationDuration | string | '.4s' | no | Duration of the show and hide animation
-animationEasing | string | 'ease' | no | Animation timing function / cubic-bezier
 
 ### Example
 

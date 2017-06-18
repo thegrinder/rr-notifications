@@ -1,17 +1,25 @@
 import React, { Component } from 'react';
-import { func, string, bool, oneOf, object } from 'prop-types';
+import { func, string, bool, object } from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { hideNotification } from '../redux/actions';
 import Notification from '../components/Notification';
 
-export default function notificationFactory(WrappedNotification) {
+export default function notificationFactory(WrappedNotification, notificationOptions = {}) {
+  const defaultOptions = {
+    animationDuration: '.4s',
+    animationEasing: 'ease',
+    slideFromSide: 'right',
+  };
+  const mergedOptions = {
+    ...defaultOptions,
+    ...notificationOptions,
+  };
+
   const propTypes = {
     hideNotification: func.isRequired,
     animatedMargin: string.isRequired,
     isVisible: bool.isRequired,
-    animationDuration: string.isRequired,
-    slideFromSide: oneOf(['left', 'right']),
     options: object,
   };
 
@@ -39,16 +47,16 @@ export default function notificationFactory(WrappedNotification) {
             notificationHeight={this.state.height}
             hideNotification={this.handleHidingNotification}
             isVisible={this.props.isVisible}
-            animationDuration={this.props.animationDuration}
-            animationEasing={this.props.animationEasing}
-            slideFromSide={this.props.slideFromSide}
+            slideFromSide={mergedOptions.slideFromSide}
+            animationEasing={mergedOptions.animationEasing}
+            animationDuration={mergedOptions.animationDuration}
           >
             <WrappedNotification
               notificationHeight={this.state.height}
               hideNotification={this.handleHidingNotification}
               isVisible={this.props.isVisible}
-              animationDuration={this.props.animationDuration}
               options={this.props.options}
+              animationDuration={mergedOptions.animationDuration}
             />
           </Notification>
         </div>

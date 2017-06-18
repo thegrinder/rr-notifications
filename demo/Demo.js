@@ -12,8 +12,16 @@ const Notification = ({options: { type, text }, hideNotification }) => {
   );
 };
 
-const TestNotification = rrNotificationFactory(Notification);
-const TestNotifications = rrContainerFactory(TestNotification);
+const DemoNotification = rrNotificationFactory(Notification, {
+  animationDuration: '1s',
+  animationEasing: 'ease',
+  slideFromSide: 'left',
+});
+
+const DemoNotificationContainer = rrContainerFactory(DemoNotification, {
+  position: ['auto', 'auto', '40px', '40px'],
+  stackNextOn: 'top',
+});
 
 class Demo extends Component {
   constructor(props) {
@@ -31,7 +39,7 @@ class Demo extends Component {
       <div>
         <button onClick={this.handleShow}>{'Add notification'}</button>
         <button onClick={this.props.hideAllNotifications}>{'Hide all'}</button>
-        <TestNotifications/>
+        <DemoNotificationContainer/>
       </div>
     );
   }
