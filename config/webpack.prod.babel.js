@@ -26,6 +26,9 @@ const prodConfig = {
     path: PATHS.build,
     filename: 'index.js',
     publicPath: '/',
+    library: 'rrNotifications',
+    libraryTarget: 'umd',
+    umdNamedDefine: true,
   },
   module: {
     rules: [
@@ -40,6 +43,13 @@ const prodConfig = {
     ],
   },
   plugins: [productionPlugin, uglifyJsPlugin],
+  externals: [
+    'react',
+    'react-dom',
+    'react-redux',
+    'redux',
+    'webpack',
+  ],
 };
 
 export default prodConfig;
