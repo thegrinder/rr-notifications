@@ -1,22 +1,22 @@
-import { RN_SHOW_NOTIFICATION, RN_HIDE_NOTIFICATION,
-  RN_HIDE_ALL_NOTIFICATIONS } from './constants';
+import { RRN_SHOW_NOTIFICATION, RRN_HIDE_NOTIFICATION,
+  RRN_HIDE_ALL_NOTIFICATIONS } from './constants';
 
 export function showNotification(options = {}) {
   return {
-    type: RN_SHOW_NOTIFICATION,
+    type: RRN_SHOW_NOTIFICATION,
     options,
   };
 }
 
 export function hideNotification(uid) {
   return {
-    type: RN_HIDE_NOTIFICATION,
+    type: RRN_HIDE_NOTIFICATION,
     uid,
   };
 }
 
 export function hideAllNotifications() {
   return {
-    type: RN_HIDE_ALL_NOTIFICATIONS,
+    type: RRN_HIDE_ALL_NOTIFICATIONS,
   };
 }

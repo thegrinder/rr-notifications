@@ -1,17 +1,17 @@
-import { RN_SHOW_NOTIFICATION, RN_HIDE_NOTIFICATION,
-  RN_HIDE_ALL_NOTIFICATIONS } from './constants';
+import { RRN_SHOW_NOTIFICATION, RRN_HIDE_NOTIFICATION,
+  RRN_HIDE_ALL_NOTIFICATIONS } from './constants';
 
 const initialState = [];
 
 export default function notifications(state = initialState, action) {
   switch (action.type) {
-    case RN_SHOW_NOTIFICATION :
+    case RRN_SHOW_NOTIFICATION :
       return state.concat({
         uid: Date.now(),
         isVisible: true,
         options: action.options,
       });
-    case RN_HIDE_NOTIFICATION :
+    case RRN_HIDE_NOTIFICATION :
       return state.map((notification) => {
         if (notification.uid === action.uid) {
           return {
@@ -21,7 +21,7 @@ export default function notifications(state = initialState, action) {
         }
         return notification;
       });
-    case RN_HIDE_ALL_NOTIFICATIONS :
+    case RRN_HIDE_ALL_NOTIFICATIONS :
       return state.map(notification => ({
         ...notification,
         isVisible: false,
