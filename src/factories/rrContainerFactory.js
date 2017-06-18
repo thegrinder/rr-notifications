@@ -3,7 +3,7 @@ import { array } from 'prop-types';
 import { connect } from 'react-redux';
 import Container from '../components/Container';
 
-export default function reduxNotificationsFactory(WrappedNotification, options = {}) {
+export default function rrContainerFactory(WrappedNotification, options = {}) {
   const defaultOptions = {
     position: ['40px', '40px', 'auto', 'auto'],
     stackNextOn: 'bottom',
