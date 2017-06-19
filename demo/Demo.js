@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { actions, rrNotificationFactory, rrContainerFactory } from './../src/index';
+import { actions, rrNotificationsFactory } from './../src/index';
 
 const Notification = ({options: { type, text }, hideNotification }) => {
   return (
@@ -12,15 +12,12 @@ const Notification = ({options: { type, text }, hideNotification }) => {
   );
 };
 
-const DemoNotification = rrNotificationFactory(Notification, {
+const DemoNotificationContainer = rrNotificationsFactory(Notification, {
+  position: ['auto', 'auto', '40px', '40px'],
+  stackNextOn: 'top',
   animationDuration: '1s',
   animationEasing: 'ease',
   slideFromSide: 'left',
-});
-
-const DemoNotificationContainer = rrContainerFactory(DemoNotification, {
-  position: ['auto', 'auto', '40px', '40px'],
-  stackNextOn: 'top',
 });
 
 class Demo extends Component {
