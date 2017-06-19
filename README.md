@@ -1,6 +1,8 @@
 # rr-notifications
 
-## reducer
+rr-notifications is a flexible and customizable redux notification system. Create your own notification component with the content you want, style it however you want and with whatever technology you want and it will work.
+
+## Reducer
 
 Import the reducer and pass it to the store.
 
@@ -87,7 +89,7 @@ const YourNotification = (props) => (
 export default YourNotification;
 ```
 
-## redux action creators
+## Action Creators
 
 There are two different actions creators available to you. `showNotification` takes an options object that is available to you inside your notification under `props.options`. You can pass all the necessary data such as type (warning, success, etc.) and message in that object. `hideAllNotifications` takes no argument and closes all of the notifications.
 

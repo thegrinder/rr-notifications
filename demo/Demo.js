@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { object, func } from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { actions, rrNotificationsFactory } from './../src/index';
 
-const Notification = ({options: { type, text }, hideNotification }) => {
+
+// Your custom notification component
+const Notification = ({ options, hideNotification }) => {
+  const { type, text } = options;
   return (
     <div>
       <div style={{ color: type === 'warning' ? 'red' : 'black' }}>{text}</div>
@@ -12,34 +16,36 @@ const Notification = ({options: { type, text }, hideNotification }) => {
   );
 };
 
+Notification.propTypes = {
+  hideNotification: func.isRequired,
+  options: object,
+};
+
+// Higher Order Component provided by 'rr-notifications'
 const DemoNotificationContainer = rrNotificationsFactory(Notification);
 
-class Demo extends Component {
-  constructor(props) {
-    super(props);
-    this.handleShow = this.handleShow.bind(this);
-  }
-  handleShow() {
-    this.props.showNotification({
+// Demo component that fires notification or hides them all
+const Demo = ({ showNotification, hideAllNotifications }) => (
+  <div>
+    <button onClick={() => showNotification({
       type: 'warning',
       text: 'This is a warning',
-    });
-  }
-  render() {
-    return (
-      <div>
-        <button onClick={this.handleShow}>{'Add notification'}</button>
-        <button onClick={this.props.hideAllNotifications}>{'Hide all'}</button>
-        <DemoNotificationContainer
-          position={['40px', '40px', 'auto', 'auto']} 
-          stackNextOn="top"
-          animationDuration=".4s"
-          animationEasing="ease"
-          slideFromSide="left"
-        />
-      </div>
-    );
-  }
-}
+    })}>
+      {'Add notification'}
+    </button>
+    <button onClick={() => hideAllNotifications()}>
+      {'Hide all notifications'}
+    </button>
+    <DemoNotificationContainer />
+  </div>
+);
 
-export default connect(undefined, dispatch => bindActionCreators(actions, dispatch))(Demo);
+Demo.propTypes = {
+  showNotification: func.isRequired,
+  hideAllNotifications: func.isRequired,
+};
+
+export default connect(
+  undefined,
+  dispatch => bindActionCreators(actions, dispatch),
+)(Demo);
