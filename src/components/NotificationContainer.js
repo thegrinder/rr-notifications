@@ -2,17 +2,19 @@ import React, { Component } from 'react';
 import { func, string, bool, object, number, oneOf } from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setNotificationHeight } from '../redux/actions';
+import { setNotificationHeight, hideNotification } from '../redux/actions';
 import Notification from '../components/Notification';
 
 
 const propTypes = {
   setNotificationHeight: func.isRequired,
+  hideNotification: func.isRequired,
   animatedMargin: string.isRequired,
   isVisible: bool.isRequired,
   animationDuration: string.isRequired,
   animationEasing: string.isRequired,
   height: number.isRequired,
+  dismissAfter: number.isRequired,
   slideFromSide: oneOf(['left', 'right']),
   options: object,
 };
@@ -20,6 +22,9 @@ const propTypes = {
 class NotificationContainer extends Component {
   componentDidMount() {
     this.props.setNotificationHeight(this.props.uid, this.notification.clientHeight);
+    setTimeout(() => {
+      this.props.hideNotification(this.props.uid);
+    }, this.props.dismissAfter);
   }
   render() {
     return (
@@ -54,5 +59,8 @@ function mapStateToProps({ notifications }, props) {
 
 export default connect(
   mapStateToProps,
-  dispatch => bindActionCreators({ setNotificationHeight }, dispatch),
+  dispatch => bindActionCreators({
+    setNotificationHeight,
+    hideNotification,
+  }, dispatch),
 )(NotificationContainer);

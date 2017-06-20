@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { array, func, string } from 'prop-types';
+import { array, func, string, number } from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { hideNotification } from '../redux/actions';
@@ -10,10 +10,11 @@ export default function rrContainerFactory(WrappedNotification) {
   const propTypes = {
     notifications: array.isRequired,
     hideNotification: func.isRequired,
-    position: array,
-    stackNextOn: string,
-    animationDuration: string,
-    animationEasing: string,
+    position: array.isRequired,
+    stackNextOn: string.isRequired,
+    animationDuration: string.isRequired,
+    animationEasing: string.isRequired,
+    dismissAfter: number.isRequired,
     slideFromSide: string,
   };
 
@@ -23,6 +24,7 @@ export default function rrContainerFactory(WrappedNotification) {
     animationDuration: '.4s',
     animationEasing: 'ease',
     slideFromSide: 'right',
+    dismissAfter: 5000,
   };
 
   class Notifications extends Component {
@@ -43,6 +45,7 @@ export default function rrContainerFactory(WrappedNotification) {
               animationDuration={this.props.animationDuration}
               animationEasing={this.props.animationEasing}
               slideFromSide={this.props.slideFromSide}
+              dismissAfter={this.props.dismissAfter}
             >
               <WrappedNotification
                 notificationHeight={notification.height}
