@@ -23,8 +23,7 @@ export default function rrContainerFactory(WrappedNotification) {
     stackNextOn: 'bottom',
     animationDuration: '.4s',
     animationEasing: 'ease',
-    slideFromSide: 'right',
-    dismissAfter: 5000,
+    dismissAfter: 10000,
   };
 
   class Notifications extends Component {
