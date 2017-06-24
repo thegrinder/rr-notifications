@@ -2,7 +2,7 @@ import { keyframes } from 'styled-components';
 
 const TRANSLATEX = 60;
 
-const verticalShow = (height, animatedMargin) => (
+export const verticalShow = (height, animatedMargin) => (
   keyframes`
     0% {
       margin-${animatedMargin}: ${-height}px;
@@ -15,7 +15,7 @@ const verticalShow = (height, animatedMargin) => (
   `
 );
 
-const verticalHide = (height, animatedMargin) => (
+export const verticalHide = (height, animatedMargin) => (
   keyframes`
     0% {
       margin-${animatedMargin}: 0px;
@@ -28,7 +28,7 @@ const verticalHide = (height, animatedMargin) => (
   `
 );
 
-const horizontalShow = (height, animatedMargin, slideFromSide) => (
+export const horizontalShow = (height, animatedMargin, slideFromSide) => (
   keyframes`
     0% {
       margin-${animatedMargin}: ${-height}px;
@@ -48,7 +48,7 @@ const horizontalShow = (height, animatedMargin, slideFromSide) => (
   `
 );
 
-const horizontalHide = (height, animatedMargin, slideFromSide) => (
+export const horizontalHide = (height, animatedMargin, slideFromSide) => (
   keyframes`
     0%{
       margin-${animatedMargin}: 0;
@@ -67,18 +67,3 @@ const horizontalHide = (height, animatedMargin, slideFromSide) => (
     }
   `
 );
-
-const getAnimation = (props) => {
-  const { isVisible, animatedMargin, slideFromSide,
-    notificationHeight } = props;
-  if (slideFromSide === 'left' || slideFromSide === 'right') {
-    return isVisible
-      ? horizontalShow(notificationHeight, animatedMargin, slideFromSide)
-      : horizontalHide(notificationHeight, animatedMargin, slideFromSide);
-  }
-  return isVisible
-      ? verticalShow(notificationHeight, animatedMargin)
-      : verticalHide(notificationHeight, animatedMargin);
-};
-
-export default getAnimation;

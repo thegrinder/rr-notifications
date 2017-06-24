@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { oneOf, number, bool, string } from 'prop-types';
-import getAnimation from '../animations/animations';
+import getAnimation from '../animations/getAnimation';
 
 const Notification = styled.div`
   animation: ${props => getAnimation(props)};
