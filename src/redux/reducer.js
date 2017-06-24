@@ -1,13 +1,13 @@
 import { RRN_SHOW_NOTIFICATION, RRN_HIDE_NOTIFICATION,
   RRN_HIDE_ALL_NOTIFICATIONS, RRN_SET_NOTIFICATION_HEIGHT } from './constants';
 
-const initialState = [];
+export const initialState = [];
 
 export default function notifications(state = initialState, action) {
   switch (action.type) {
     case RRN_SHOW_NOTIFICATION :
       return state.concat({
-        uid: Date.now(),
+        uid: action.options.uid || Date.now(),
         isVisible: true,
         height: 0,
         options: action.options,
