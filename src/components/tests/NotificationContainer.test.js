@@ -8,10 +8,9 @@ import NotificationContainer from '../NotificationContainer';
 
 jest.useFakeTimers();
 
-const mockStore = configureStore();
-
 describe('<NotificationContainer />', () => {
-  let renderedComponent;
+  const mockStore = configureStore();
+  let mountedComponent;
   let store;
   const testProps = {
     uid: 1,
@@ -20,29 +19,37 @@ describe('<NotificationContainer />', () => {
     animationDuration: '.4s',
     animationEasing: 'ease',
   };
+  const testNotificationState = { uid: testProps.uid, isVisible: true, height: 20 };
   const testInitialState = {
-    notifications: [
-      { uid: testProps.uid, isVisible: true, height: 20 },
-    ],
+    notifications: [testNotificationState],
   };
 
   beforeEach(() => {
     setTimeout.mockClear();
     store = mockStore(testInitialState);
     store.dispatch = jest.fn();
-    renderedComponent = mount(
+    mountedComponent = mount(
       <Provider store={store}>
         <NotificationContainer {...testProps} />
       </Provider>,
     );
   });
 
-  it('maps state and dispatch to props', () => {
-    expect(renderedComponent.find('NotificationContainer').props()).toMatchObject(testProps);
+  it('maps state to props', () => {
+    expect(mountedComponent.find('NotificationContainer').props())
+      .toMatchObject(testNotificationState);
+  });
+
+  it('maps dispatch to props', () => {
+    expect(mountedComponent.find('NotificationContainer').props()).toMatchObject({
+      setNotificationHeight: expect.any(Function),
+      hideNotification: expect.any(Function),
+    });
   });
 
   it('dispatches setNotificationHeight and then hideNotification', () => {
     const { uid, dismissAfter } = testProps;
+    // clientHeight is 0 in the test environment
     expect(store.dispatch).toHaveBeenCalledWith(setNotificationHeight(uid, 0));
     jest.runAllTimers();
     expect(setTimeout.mock.calls.length).toBe(1);
