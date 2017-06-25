@@ -9,7 +9,7 @@ import NotificationContainer from '../components/NotificationContainer';
 export const defaultProps = {
   position: ['40px', '40px', 'auto', 'auto'],
   stackNextOn: 'top',
-  animationDuration: '.4s',
+  animationDuration: 400,
   animationEasing: 'ease',
   dismissAfter: 10000,
 };
@@ -20,7 +20,7 @@ export default function rrContainerFactory(WrappedNotification) {
     hideNotification: func.isRequired,
     position: array.isRequired,
     stackNextOn: string.isRequired,
-    animationDuration: string.isRequired,
+    animationDuration: number.isRequired,
     animationEasing: string.isRequired,
     dismissAfter: number.isRequired,
     slideFromSide: string,

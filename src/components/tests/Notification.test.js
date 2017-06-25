@@ -6,7 +6,7 @@ const testProps = {
   isVisible: true,
   notificationHeight: 40,
   animatedMargin: 'top',
-  animationDuration: '.4s',
+  animationDuration: 400,
   animationEasing: 'ease',
 };
 const children = (<p>test</p>);

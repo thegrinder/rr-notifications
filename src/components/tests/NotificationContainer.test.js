@@ -16,7 +16,7 @@ describe('<NotificationContainer />', () => {
     uid: 1,
     dismissAfter: 1000,
     animatedMargin: 'bottom',
-    animationDuration: '.4s',
+    animationDuration: 400,
     animationEasing: 'ease',
   };
   const testNotificationState = { uid: testProps.uid, isVisible: true, height: 20 };

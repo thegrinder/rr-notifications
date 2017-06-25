@@ -13,7 +13,7 @@ const propTypes = {
   hideNotification: func.isRequired,
   animatedMargin: string.isRequired,
   isVisible: bool.isRequired,
-  animationDuration: string.isRequired,
+  animationDuration: number.isRequired,
   animationEasing: string.isRequired,
   height: number.isRequired,
   dismissAfter: number.isRequired,

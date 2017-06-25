@@ -11,7 +11,7 @@ describe('rrNotificationsFactory', () => {
   const testProps = {
     position: ['auto', 'auto', '20px', '20px'],
     stackNextOn: 'top',
-    animationDuration: '1s',
+    animationDuration: 1000,
     animationEasing: 'ease',
     dismissAfter: 100,
   };

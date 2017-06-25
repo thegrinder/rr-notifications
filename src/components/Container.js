@@ -1,12 +1,6 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { array, string } from 'prop-types';
-
-const COORDINATES = ['top', 'right', 'bottom', 'left'];
-const getPosition = css`
-  ${props => props.position.map((value, index) => (
-    `${COORDINATES[index]}: ${value};`
-  ))}
-`;
+import { getPosition } from '../helpers/utils';
 
 const Container = styled.div`
   position: fixed;
