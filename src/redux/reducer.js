@@ -1,4 +1,4 @@
-import { RRN_SHOW_NOTIFICATION, RRN_HIDE_NOTIFICATION,
+import { RRN_SHOW_NOTIFICATION, RRN_HIDE_NOTIFICATION, RRN_REMOVE_NOTIFICATION,
   RRN_HIDE_ALL_NOTIFICATIONS, RRN_SET_NOTIFICATION_HEIGHT } from './constants';
 
 export const initialState = [];
@@ -22,6 +22,8 @@ export default function notifications(state = initialState, action) {
         }
         return notification;
       });
+    case RRN_REMOVE_NOTIFICATION :
+      return state.filter(notification => notification.uid !== action.uid);
     case RRN_HIDE_ALL_NOTIFICATIONS :
       return state.map(notification => ({
         ...notification,

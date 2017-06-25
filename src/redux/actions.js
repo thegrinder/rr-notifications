@@ -1,4 +1,4 @@
-import { RRN_SHOW_NOTIFICATION, RRN_HIDE_NOTIFICATION,
+import { RRN_SHOW_NOTIFICATION, RRN_HIDE_NOTIFICATION, RRN_REMOVE_NOTIFICATION,
   RRN_HIDE_ALL_NOTIFICATIONS, RRN_SET_NOTIFICATION_HEIGHT } from './constants';
 
 export function showNotification(options = {}) {
@@ -11,6 +11,13 @@ export function showNotification(options = {}) {
 export function hideNotification(uid) {
   return {
     type: RRN_HIDE_NOTIFICATION,
+    uid,
+  };
+}
+
+export function removeNotification(uid) {
+  return {
+    type: RRN_REMOVE_NOTIFICATION,
     uid,
   };
 }

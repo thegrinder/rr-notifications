@@ -3,7 +3,8 @@ import { func, string, bool, object,
   number, oneOf, any } from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setNotificationHeight, hideNotification } from '../redux/actions';
+import { setNotificationHeight, hideNotification,
+  removeNotification } from '../redux/actions';
 import Notification from '../components/Notification';
 
 
@@ -11,6 +12,7 @@ const propTypes = {
   uid: any.isRequired,
   setNotificationHeight: func.isRequired,
   hideNotification: func.isRequired,
+  removeNotification: func.isRequired,
   animatedMargin: string.isRequired,
   isVisible: bool.isRequired,
   animationDuration: number.isRequired,
@@ -27,6 +29,9 @@ export class NotificationContainer extends Component {
     setTimeout(() => {
       this.props.hideNotification(this.props.uid);
     }, this.props.dismissAfter);
+    setTimeout(() => {
+      this.props.removeNotification(this.props.uid);
+    }, this.props.dismissAfter + this.props.animationDuration);
   }
   render() {
     return (
@@ -64,5 +69,6 @@ export default connect(
   dispatch => bindActionCreators({
     setNotificationHeight,
     hideNotification,
+    removeNotification,
   }, dispatch),
 )(NotificationContainer);

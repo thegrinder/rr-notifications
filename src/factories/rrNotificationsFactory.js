@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { array, func, string, number } from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { hideNotification } from '../redux/actions';
+import { hideNotification, removeNotification } from '../redux/actions';
 import Container from '../components/Container';
 import NotificationContainer from '../components/NotificationContainer';
 
@@ -18,6 +18,7 @@ export default function rrContainerFactory(WrappedNotification) {
   const propTypes = {
     notifications: array.isRequired,
     hideNotification: func.isRequired,
+    removeNotification: func.isRequired,
     position: array.isRequired,
     stackNextOn: string.isRequired,
     animationDuration: number.isRequired,
@@ -27,6 +28,16 @@ export default function rrContainerFactory(WrappedNotification) {
   };
 
   class Notifications extends Component {
+    constructor(props) {
+      super(props);
+      this.handleHiding = this.handleHiding.bind(this);
+    }
+    handleHiding(uid) {
+      this.props.hideNotification(uid);
+      setTimeout(() => {
+        this.props.removeNotification(uid);
+      }, this.props.animationDuration);
+    }
     render() {
       return (
         <Container
@@ -48,7 +59,7 @@ export default function rrContainerFactory(WrappedNotification) {
             >
               <WrappedNotification
                 notificationHeight={notification.height}
-                hideNotification={() => { this.props.hideNotification(notification.uid); }}
+                hideNotification={() => { this.handleHiding(notification.uid); }}
                 isVisible={notification.isVisible}
                 options={notification.options}
                 animationDuration={this.props.animationDuration}
@@ -65,6 +76,9 @@ export default function rrContainerFactory(WrappedNotification) {
 
   return connect(
     ({ notifications }) => ({ notifications }),
-    dispatch => bindActionCreators({ hideNotification }, dispatch),
+    dispatch => bindActionCreators({
+      hideNotification,
+      removeNotification,
+    }, dispatch),
   )(Notifications);
 }
