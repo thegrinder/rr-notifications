@@ -4,10 +4,10 @@ import { horizontalShow, horizontalHide, verticalShow,
 
 jest.mock('styled-components');
 
-describe('horizontalShow(), horizontalHide(), verticalShow(), verticalHide()', () => {
+describe('horizontalShow, horizontalHide, verticalShow, verticalHide', () => {
   const animations = [horizontalShow, horizontalHide, verticalShow, verticalHide];
   animations.forEach((animation) => {
-    test('it should call styled-components\' keyframes method', () => {
+    it('it should call styled-components\' keyframes method', () => {
       animation({});
       expect(keyframes).toBeCalled();
     });

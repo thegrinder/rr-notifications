@@ -4,7 +4,7 @@ import { horizontalShow, horizontalHide, verticalShow,
 
 jest.mock('../animations');
 
-describe('getAnimation()', () => {
+describe('getAnimation', () => {
   const height = 40;
   const margin = 'bottom';
   const side = 'left';
