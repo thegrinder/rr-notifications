@@ -6,6 +6,14 @@ import { hideNotification } from '../redux/actions';
 import Container from '../components/Container';
 import NotificationContainer from '../components/NotificationContainer';
 
+export const defaultProps = {
+  position: ['40px', '40px', 'auto', 'auto'],
+  stackNextOn: 'bottom',
+  animationDuration: '.4s',
+  animationEasing: 'ease',
+  dismissAfter: 10000,
+};
+
 export default function rrContainerFactory(WrappedNotification) {
   const propTypes = {
     notifications: array.isRequired,
@@ -16,14 +24,6 @@ export default function rrContainerFactory(WrappedNotification) {
     animationEasing: string.isRequired,
     dismissAfter: number.isRequired,
     slideFromSide: string,
-  };
-
-  const defaultProps = {
-    position: ['40px', '40px', 'auto', 'auto'],
-    stackNextOn: 'bottom',
-    animationDuration: '.4s',
-    animationEasing: 'ease',
-    dismissAfter: 10000,
   };
 
   class Notifications extends Component {

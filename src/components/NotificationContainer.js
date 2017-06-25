@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { func, string, bool, object, number, oneOf } from 'prop-types';
+import { func, string, bool, object,
+  number, oneOf, any } from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setNotificationHeight, hideNotification } from '../redux/actions';
@@ -7,6 +8,7 @@ import Notification from '../components/Notification';
 
 
 const propTypes = {
+  uid: any.isRequired,
   setNotificationHeight: func.isRequired,
   hideNotification: func.isRequired,
   animatedMargin: string.isRequired,
@@ -19,7 +21,7 @@ const propTypes = {
   options: object,
 };
 
-class NotificationContainer extends Component {
+export class NotificationContainer extends Component {
   componentDidMount() {
     this.props.setNotificationHeight(this.props.uid, this.notification.clientHeight);
     setTimeout(() => {
