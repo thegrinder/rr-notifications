@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { oneOf, number, bool, string } from 'prop-types';
 import getAnimation from '../animations/getAnimation';
-import { getCssDuration } from '../helpers/utils';
+import { getDuration } from '../helpers/utils';
 
 const Notification = styled.div`
   position: relative;
@@ -9,7 +9,7 @@ const Notification = styled.div`
   animation: ${props => getAnimation(props)};
   animation-timing-function: ${props => props.animationEasing};
   animation-fill-mode: forwards;
-  ${getCssDuration}
+  ${getDuration}
 `;
 
 Notification.propTypes = {
