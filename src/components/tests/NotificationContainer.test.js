@@ -3,7 +3,8 @@ import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
 
-import { setNotificationHeight, hideNotification } from '../../redux/actions';
+import { setNotificationHeight, hideNotification,
+  removeNotification } from '../../redux/actions';
 import NotificationContainer from '../NotificationContainer';
 
 jest.useFakeTimers();
@@ -47,13 +48,15 @@ describe('<NotificationContainer />', () => {
     });
   });
 
-  it('dispatches setNotificationHeight and then hideNotification', () => {
-    const { uid, dismissAfter } = testProps;
+  it('dispatches setNotificationHeight and then hideNotification and removeNotification', () => {
+    const { uid, dismissAfter, animationDuration } = testProps;
     // clientHeight is 0 in the test environment
     expect(store.dispatch).toHaveBeenCalledWith(setNotificationHeight(uid, 0));
     jest.runAllTimers();
-    expect(setTimeout.mock.calls.length).toBe(1);
+    expect(setTimeout.mock.calls.length).toBe(2);
     expect(setTimeout.mock.calls[0][1]).toBe(dismissAfter);
+    expect(setTimeout.mock.calls[1][1]).toBe(dismissAfter + animationDuration);
     expect(store.dispatch).toHaveBeenCalledWith(hideNotification(uid));
+    expect(store.dispatch).toHaveBeenCalledWith(removeNotification(uid));
   });
 });
