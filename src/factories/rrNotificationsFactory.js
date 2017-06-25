@@ -8,7 +8,7 @@ import NotificationContainer from '../components/NotificationContainer';
 
 export const defaultProps = {
   position: ['40px', '40px', 'auto', 'auto'],
-  stackNextOn: 'bottom',
+  stackNextOn: 'top',
   animationDuration: '.4s',
   animationEasing: 'ease',
   dismissAfter: 10000,

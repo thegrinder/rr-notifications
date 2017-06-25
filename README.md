@@ -27,7 +27,7 @@ Prop    | Type   | Default   | Required | Description
 :-------|:------:|:---------:|:--------:|:----------------------------------------
 position | array | ['40px', '40px', 'auto', 'auto'] | no | Fixed position where notifications are displayed
 stackNextOn | 'bottom', 'top' | 'top' | no | Position of the new notification in the stack
-slideFromSide | 'right', 'left' | 'right' | no | Horizontal direction which notification appears from. If not provided, the notification will appear from top or bottom, depending on stackNextOn prop
+slideFromSide | 'right', 'left' | undefined | no | Horizontal direction which notification appears from. If not provided, the notification will appear from top or bottom, depending on stackNextOn prop
 dismissAfter | number | 5000 | no | Time in ms after which the notification disappears
 animationDuration | string | '.4s' | no | Duration of the show and hide animation
 animationEasing | string | 'ease' | no | Animation timing function / cubic-bezier
@@ -46,8 +46,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Notifications 
-          position={[ 'auto', 'auto', '40px', '40px']} 
+        <Notifications
+          position={[ 'auto', 'auto', '40px', '40px']}
           stackNextOn="bottom"
           animationDuration=".4s"
           animationEasing="ease"
