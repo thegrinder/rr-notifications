@@ -1,7 +1,7 @@
 import { showNotification, hideNotification, hideAllNotifications,
-  setNotificationHeight, removeNotification } from '../actions';
+  removeNotification } from '../actions';
 import { RRN_SHOW_NOTIFICATION, RRN_HIDE_NOTIFICATION, RRN_REMOVE_NOTIFICATION,
-  RRN_HIDE_ALL_NOTIFICATIONS, RRN_SET_NOTIFICATION_HEIGHT } from '../constants';
+  RRN_HIDE_ALL_NOTIFICATIONS } from '../constants';
 
 describe('notifications actions', () => {
   const uid = 'testUid';
@@ -24,14 +24,6 @@ describe('notifications actions', () => {
     it('should return correct type', () => {
       const expected = { type: RRN_HIDE_ALL_NOTIFICATIONS };
       expect(hideAllNotifications()).toEqual(expected);
-    });
-  });
-
-  describe('setNotificationHeight', () => {
-    it('should return correct type and passed uid and height', () => {
-      const height = 40;
-      const expected = { type: RRN_SET_NOTIFICATION_HEIGHT, uid, height };
-      expect(setNotificationHeight(uid, height)).toEqual(expected);
     });
   });
 

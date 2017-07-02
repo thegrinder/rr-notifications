@@ -58,7 +58,6 @@ export default function rrContainerFactory(WrappedNotification) {
               dismissAfter={this.props.dismissAfter}
             >
               <WrappedNotification
-                notificationHeight={notification.height}
                 hideNotification={() => { this.handleHiding(notification.uid); }}
                 isVisible={notification.isVisible}
                 options={notification.options}

@@ -1,6 +1,6 @@
 import notifications, { initialState } from '../reducer';
 import { showNotification, hideNotification, hideAllNotifications,
-  setNotificationHeight, removeNotification } from '../actions';
+  removeNotification } from '../actions';
 
 describe('notifications reducer', () => {
   const uid = 'testUid';
@@ -12,7 +12,7 @@ describe('notifications reducer', () => {
     const options = { uid };
     const expected = [
       ...initialState,
-      { uid, options, isVisible: true, height: 0 },
+      { uid, options, isVisible: true },
     ];
     expect(notifications(initialState, showNotification(options))).toEqual(expected);
   });
@@ -33,15 +33,6 @@ describe('notifications reducer', () => {
       { uid: 2, isVisible: false },
     ];
     expect(notifications(testState, hideAllNotifications())).toEqual(expectedState);
-  });
-
-  it('should handle setNotificationHeight properly', () => {
-    const targetHeight = 40;
-    const nonTargetNotification = { uid: 2, height: 20 };
-    const testState = [{ uid, height: 0 }, nonTargetNotification];
-    const expected = [{ uid, height: targetHeight }, nonTargetNotification];
-    expect(notifications(testState, setNotificationHeight(uid, targetHeight)))
-      .toEqual(expected);
   });
 
   it('should handle removeNotification properly', () => {
