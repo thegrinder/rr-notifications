@@ -86,9 +86,7 @@ describe('rrNotificationsFactory', () => {
       .toEqual(numOfNotifications);
     mountedComponent.find(WrappedNotification).forEach((component) => {
       expect(component.props()).toMatchObject({
-        animationDuration,
         hideNotification: expect.any(Function),
-        isVisible: expect.any(Boolean),
         options: expect.any(Object),
       });
     });

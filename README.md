@@ -67,8 +67,6 @@ Thanks to rrNotificationsFactory, your wrapped custom notification component has
 Props | Types | Description
 :-----|:-----:|:-----------
 options | object | Custom data passed to the notification (see action creators section)
-isVisible | boolean | Whether the notification is visible. The initial value for a new notification is `true`. That's why if you want a custom animation, use css keyframes that let you define initial animation state
-animationDuration | number | Animation duration in miliseconds passed down from the wrapper component
 hideNotification | function | Function enabling you to close the current notification
 
 ### Example
@@ -78,7 +76,7 @@ hideNotification | function | Function enabling you to close the current notific
 
 const YourNotification = (props) => (
   // props available thanks to wrapping the component
-  const { options, isVisible, animationDuration, hideNotification } = props;
+  const { options, hideNotification } = props;
   <div>
     <div>Notification</div>
     <button onClick={hideNotification}>Click to close</button>

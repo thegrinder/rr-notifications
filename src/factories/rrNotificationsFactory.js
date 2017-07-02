@@ -59,9 +59,7 @@ export default function rrContainerFactory(WrappedNotification) {
             >
               <WrappedNotification
                 hideNotification={() => { this.handleHiding(notification.uid); }}
-                isVisible={notification.isVisible}
                 options={notification.options}
-                animationDuration={this.props.animationDuration}
               />
             </NotificationContainer>
           ))}
