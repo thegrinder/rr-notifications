@@ -5,21 +5,29 @@
     browser: true,
     jest: true
   },
-  extends: "airbnb-base",
+  extends: "airbnb",
   plugins: ["react"],
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
+    parserOptions: {
+    ecmaFeatures: {
+      jsx: true
     }
   },
-  "rules": {
+  rules: {
     "react/jsx-uses-react": "error",
-    "react/jsx-uses-vars": "error",
+    "react/jsx-filename-extension": "off",
+    "no-underscore-dangle": "off",
+    "import/prefer-default-export": "off",
+    "import/no-named-as-default": "off",
+    "react/forbid-prop-types": "off",
+    "object-curly-newline": ["error", {
+      "ImportDeclaration": { "multiline": true, "minProperties": 4 }
+    }],
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }]
   },
-  "settings": {
+  settings: {
     "import/resolver": {
-      "node": {
-        "paths": ["app"]
+      webpack: {
+        config: "./config/webpack.dev.js"
       }
     }
   }

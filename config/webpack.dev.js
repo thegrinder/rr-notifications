@@ -1,20 +1,17 @@
-import webpack from 'webpack';
-import path from 'path';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import PATHS from './paths';
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const PATHS = require('./paths');
 
 const htmlPlugin = new HtmlWebpackPlugin({
   template: path.join(`${__dirname}/../demo/index.html`),
   filename: 'index.html',
   inject: 'body',
 });
-const hmrePlugin = new webpack.HotModuleReplacementPlugin();
 
 const devConfig = {
+  mode: 'development',
   entry: [
-    'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
     PATHS.demo,
   ],
   output: {
@@ -26,7 +23,7 @@ const devConfig = {
   devtool: 'cheap-module-source-map',
   devServer: {
     contentBase: PATHS.build,
-    hot: true,
+    disableHostCheck: true,
     publicPath: '/',
   },
   module: {
@@ -38,7 +35,7 @@ const devConfig = {
       },
     ],
   },
-  plugins: [htmlPlugin, hmrePlugin],
+  plugins: [htmlPlugin],
 };
 
-export default devConfig;
+module.exports = devConfig;
