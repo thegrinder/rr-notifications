@@ -20,7 +20,7 @@ Notification.propTypes = {
   animatedMargin: oneOf(['bottom', 'top']).isRequired,
   animationDuration: number.isRequired,
   animationEasing: string.isRequired,
-  slideFromSide: oneOf(['left', 'right']),
+  slideFromSide: string.isRequired,
 };
 
 export default Notification;

@@ -1,25 +1,16 @@
 import React, { Component } from 'react';
-import {
-  func, string, bool, object,
-  number, oneOf, any,
-} from 'prop-types';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { hideNotification, removeNotification } from '../redux/actions';
+import PropTypes from 'prop-types';
 import Notification from './Notification';
 
 
 const propTypes = {
-  uid: any.isRequired,
-  hideNotification: func.isRequired,
-  removeNotification: func.isRequired,
-  animatedMargin: string.isRequired,
-  isVisible: bool.isRequired,
-  animationDuration: number.isRequired,
-  animationEasing: string.isRequired,
-  dismissAfter: number.isRequired,
-  slideFromSide: oneOf(['left', 'right']),
-  options: object,
+  id: PropTypes.any.isRequired,
+  animatedMargin: PropTypes.string.isRequired,
+  isVisible: PropTypes.bool.isRequired,
+  animationDuration: PropTypes.number.isRequired,
+  animationEasing: PropTypes.string.isRequired,
+  dismissAfter: PropTypes.number.isRequired,
+  slideFromSide: PropTypes.string.isRequired,
 };
 
 export class NotificationContainer extends Component {
@@ -34,12 +25,12 @@ export class NotificationContainer extends Component {
     this.setState({
       height: this.notification.clientHeight,
     });
-    setTimeout(() => {
-      this.props.hideNotification(this.props.uid);
-    }, this.props.dismissAfter);
-    setTimeout(() => {
-      this.props.removeNotification(this.props.uid);
-    }, this.props.dismissAfter + this.props.animationDuration);
+    // setTimeout(() => {
+    //   this.props.hideNotification(this.props.uid);
+    // }, this.props.dismissAfter);
+    // setTimeout(() => {
+    //   this.props.removeNotification(this.props.uid);
+    // }, this.props.dismissAfter + this.props.animationDuration);
   }
 
   render() {
@@ -62,20 +53,4 @@ export class NotificationContainer extends Component {
 
 NotificationContainer.propTypes = propTypes;
 
-function mapStateToProps({ notifications }, props) {
-  const { isVisible, options } = notifications.find(notification => (
-    notification.uid === props.uid
-  ));
-  return {
-    isVisible,
-    options,
-  };
-}
-
-export default connect(
-  mapStateToProps,
-  dispatch => bindActionCreators({
-    hideNotification,
-    removeNotification,
-  }, dispatch),
-)(NotificationContainer);
+export default NotificationContainer;
