@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { array, func, string, number } from 'prop-types';
+import {
+  array, func, string, number,
+} from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { hideNotification, removeNotification } from '../redux/actions';
@@ -32,12 +34,14 @@ export default function rrContainerFactory(WrappedNotification) {
       super(props);
       this.handleHiding = this.handleHiding.bind(this);
     }
+
     handleHiding(uid) {
       this.props.hideNotification(uid);
       setTimeout(() => {
         this.props.removeNotification(uid);
       }, this.props.animationDuration);
     }
+
     render() {
       return (
         <Container

@@ -1,6 +1,8 @@
 import { keyframes } from 'styled-components';
-import { horizontalShow, horizontalHide, verticalShow,
-  verticalHide } from '../animations';
+import {
+  horizontalShow, horizontalHide, verticalShow,
+  verticalHide,
+} from '../animations';
 
 jest.mock('styled-components');
 

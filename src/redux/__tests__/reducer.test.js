@@ -1,6 +1,8 @@
 import notifications, { initialState } from '../reducer';
-import { showNotification, hideNotification, hideAllNotifications,
-  removeNotification } from '../actions';
+import {
+  showNotification, hideNotification, hideAllNotifications,
+  removeNotification,
+} from '../actions';
 
 describe('notifications reducer', () => {
   const uid = 'testUid';

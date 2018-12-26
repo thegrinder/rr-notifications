@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { func, string, bool, object,
-  number, oneOf, any } from 'prop-types';
+import {
+  func, string, bool, object,
+  number, oneOf, any,
+} from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { hideNotification, removeNotification } from '../redux/actions';
-import Notification from '../components/Notification';
+import Notification from './Notification';
 
 
 const propTypes = {
@@ -27,6 +29,7 @@ export class NotificationContainer extends Component {
       height: 0,
     };
   }
+
   componentDidMount() {
     this.setState({
       height: this.notification.clientHeight,
@@ -38,6 +41,7 @@ export class NotificationContainer extends Component {
       this.props.removeNotification(this.props.uid);
     }, this.props.dismissAfter + this.props.animationDuration);
   }
+
   render() {
     return (
       <div ref={(notification) => { this.notification = notification; }}>

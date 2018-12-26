@@ -1,5 +1,7 @@
 import styled from 'styled-components';
-import { oneOf, number, bool, string } from 'prop-types';
+import {
+  oneOf, number, bool, string,
+} from 'prop-types';
 import getAnimation from '../animations/getAnimation';
 import { getDuration } from '../helpers/utils';
 
@@ -22,4 +24,3 @@ Notification.propTypes = {
 };
 
 export default Notification;
-

@@ -1,6 +1,8 @@
 import { css } from 'styled-components';
-import { convertToCssPosition, convertToCssDuration,
-  getPosition, getDuration } from '../utils';
+import {
+  convertToCssPosition, convertToCssDuration,
+  getPosition, getDuration,
+} from '../utils';
 
 jest.mock('styled-components');
 

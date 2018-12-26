@@ -1,5 +1,9 @@
-import { horizontalShow, horizontalHide, verticalShow,
-  verticalHide } from './animations';
+import {
+  horizontalShow,
+  horizontalHide,
+  verticalShow,
+  verticalHide,
+} from './animations';
 
 const getAnimation = (props) => {
   const { isVisible, animatedMargin, slideFromSide,
@@ -10,8 +14,8 @@ const getAnimation = (props) => {
       : horizontalHide(notificationHeight, animatedMargin, slideFromSide);
   }
   return isVisible
-      ? verticalShow(notificationHeight, animatedMargin)
-      : verticalHide(notificationHeight, animatedMargin);
+    ? verticalShow(notificationHeight, animatedMargin)
+    : verticalHide(notificationHeight, animatedMargin);
 };
 
 export default getAnimation;

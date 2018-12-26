@@ -1,6 +1,8 @@
 import getAnimation from '../getAnimation';
-import { horizontalShow, horizontalHide, verticalShow,
-  verticalHide } from '../animations';
+import {
+  horizontalShow, horizontalHide, verticalShow,
+  verticalHide,
+} from '../animations';
 
 jest.mock('../animations');
 

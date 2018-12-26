@@ -11,7 +11,7 @@ const renderComponent = (props = {}) => shallow(
   </Container>,
 );
 const mountComponent = (props = {}) => mount(
-  <Container {...props}/>,
+  <Container {...props} />,
 );
 
 describe('<Container />', () => {

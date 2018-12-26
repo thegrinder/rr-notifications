@@ -1,7 +1,11 @@
-import { showNotification, hideNotification, hideAllNotifications,
-  removeNotification } from '../actions';
-import { RRN_SHOW_NOTIFICATION, RRN_HIDE_NOTIFICATION, RRN_REMOVE_NOTIFICATION,
-  RRN_HIDE_ALL_NOTIFICATIONS } from '../constants';
+import {
+  showNotification, hideNotification, hideAllNotifications,
+  removeNotification,
+} from '../actions';
+import {
+  RRN_SHOW_NOTIFICATION, RRN_HIDE_NOTIFICATION, RRN_REMOVE_NOTIFICATION,
+  RRN_HIDE_ALL_NOTIFICATIONS,
+} from '../constants';
 
 describe('notifications actions', () => {
   const uid = 'testUid';

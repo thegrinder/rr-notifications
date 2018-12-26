@@ -1,5 +1,9 @@
-import { RRN_SHOW_NOTIFICATION, RRN_HIDE_NOTIFICATION, RRN_REMOVE_NOTIFICATION,
-  RRN_HIDE_ALL_NOTIFICATIONS } from './constants';
+import {
+  RRN_SHOW_NOTIFICATION,
+  RRN_HIDE_NOTIFICATION,
+  RRN_REMOVE_NOTIFICATION,
+  RRN_HIDE_ALL_NOTIFICATIONS,
+} from './constants';
 
 export function showNotification(options = {}) {
   return {
