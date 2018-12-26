@@ -1,7 +1,5 @@
 import styled from 'styled-components';
-import {
-  oneOf, number, bool, string,
-} from 'prop-types';
+import PropTypes from 'prop-types';
 import getAnimation from '../animations/getAnimation';
 import { getDuration } from '../helpers/utils';
 
@@ -15,12 +13,12 @@ const Notification = styled.div`
 `;
 
 Notification.propTypes = {
-  isVisible: bool.isRequired,
-  notificationHeight: number.isRequired,
-  animatedMargin: oneOf(['bottom', 'top']).isRequired,
-  animationDuration: number.isRequired,
-  animationEasing: string.isRequired,
-  slideFromSide: string.isRequired,
+  isVisible: PropTypes.bool.isRequired,
+  notificationHeight: PropTypes.number.isRequired,
+  animatedMargin: PropTypes.oneOf(['bottom', 'top']).isRequired,
+  animationDuration: PropTypes.number.isRequired,
+  animationEasing: PropTypes.string.isRequired,
+  slideFromSide: PropTypes.string.isRequired,
 };
 
 export default Notification;

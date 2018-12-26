@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { array, string } from 'prop-types';
+import PropTypes from 'prop-types';
 import { getPosition } from '../helpers/utils';
 
 const Container = styled.div`
@@ -11,8 +11,8 @@ const Container = styled.div`
 `;
 
 Container.propTypes = {
-  position: array.isRequired,
-  stackNextOn: string.isRequired,
+  position: PropTypes.array.isRequired,
+  stackNextOn: PropTypes.string.isRequired,
 };
 
 export default Container;

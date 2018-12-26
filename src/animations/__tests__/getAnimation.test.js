@@ -1,6 +1,8 @@
 import getAnimation from '../getAnimation';
 import {
-  horizontalShow, horizontalHide, verticalShow,
+  horizontalShow,
+  horizontalHide,
+  verticalShow,
   verticalHide,
 } from '../animations';
 

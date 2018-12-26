@@ -4,7 +4,10 @@ import Notification from './Notification';
 
 
 const propTypes = {
-  id: PropTypes.any.isRequired,
+  children: PropTypes.node.isRequired,
+  id: PropTypes.string.isRequired,
+  hideNotification: PropTypes.func.isRequired,
+  unmountNotification: PropTypes.func.isRequired,
   animatedMargin: PropTypes.string.isRequired,
   isVisible: PropTypes.bool.isRequired,
   animationDuration: PropTypes.number.isRequired,
@@ -25,26 +28,42 @@ export class NotificationContainer extends Component {
     this.setState({
       height: this.notification.clientHeight,
     });
-    // setTimeout(() => {
-    //   this.props.hideNotification(this.props.uid);
-    // }, this.props.dismissAfter);
-    // setTimeout(() => {
-    //   this.props.removeNotification(this.props.uid);
-    // }, this.props.dismissAfter + this.props.animationDuration);
+    const {
+      id,
+      hideNotification,
+      unmountNotification,
+      dismissAfter,
+      animationDuration,
+    } = this.props;
+    setTimeout(() => {
+      hideNotification(id);
+    }, dismissAfter);
+    setTimeout(() => {
+      unmountNotification(id);
+    }, dismissAfter + animationDuration);
   }
 
   render() {
+    const {
+      children,
+      animatedMargin,
+      isVisible,
+      slideFromSide,
+      animationEasing,
+      animationDuration,
+    } = this.props;
+    const { height } = this.state;
     return (
       <div ref={(notification) => { this.notification = notification; }}>
         <Notification
-          animatedMargin={this.props.animatedMargin}
-          notificationHeight={this.state.height}
-          isVisible={this.props.isVisible}
-          slideFromSide={this.props.slideFromSide}
-          animationEasing={this.props.animationEasing}
-          animationDuration={this.props.animationDuration}
+          animatedMargin={animatedMargin}
+          notificationHeight={height}
+          isVisible={isVisible}
+          slideFromSide={slideFromSide}
+          animationEasing={animationEasing}
+          animationDuration={animationDuration}
         >
-          {this.props.children}
+          {children}
         </Notification>
       </div>
     );

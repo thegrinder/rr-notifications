@@ -1,6 +1,8 @@
 import { keyframes } from 'styled-components';
 import {
-  horizontalShow, horizontalHide, verticalShow,
+  horizontalShow,
+  horizontalHide,
+  verticalShow,
   verticalHide,
 } from '../animations';
 

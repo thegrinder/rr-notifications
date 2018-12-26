@@ -38,7 +38,7 @@ const Notifications = ({
   const [notifications, updateNotifications] = useState([]);
   const showNotification = (payload = {}) => updateNotifications(state => (
     state.concat({
-      id: Date.now(),
+      id: Date.now().toString(),
       isVisible: true,
       payload,
     })
@@ -75,6 +75,8 @@ const Notifications = ({
             animatedMargin={position[0] === 'auto' ? 'bottom' : 'top'}
             key={id}
             id={id}
+            hideNotification={hideNotification}
+            unmountNotification={unmountNotification}
             animationDuration={animationDuration}
             animationEasing={animationEasing}
             slideFromSide={slideFromSide}
