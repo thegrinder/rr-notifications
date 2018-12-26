@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const PATHS = require('./paths');
 
 const prodConfig = {
@@ -29,8 +28,6 @@ const prodConfig = {
   externals: [
     'react',
     'react-dom',
-    'react-redux',
-    'redux',
     'webpack',
   ],
 };

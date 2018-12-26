@@ -1,18 +1,6 @@
 import React, { useContext } from 'react';
 import { NotificationsProvider, NotificationsContext } from '../src/index';
 
-
-// Your custom notification component
-const renderNotification = ({ payload, removeNotification }) => {
-  const { type, text } = payload;
-  return (
-    <div>
-      <div style={{ color: type === 'warning' ? 'red' : 'black' }}>{text}</div>
-      <button type="button" onClick={removeNotification}>Click to close</button>
-    </div>
-  );
-};
-
 const Demo = () => {
   const { showNotification } = useContext(NotificationsContext);
   return (
@@ -31,7 +19,14 @@ const Demo = () => {
 };
 
 const Wrapper = () => (
-  <NotificationsProvider renderNotification={renderNotification}>
+  <NotificationsProvider
+    renderNotification={({ payload: { type, text }, removeNotification }) => (
+      <div>
+        <div style={{ color: type === 'warning' ? 'red' : 'black' }}>{text}</div>
+        <button type="button" onClick={removeNotification}>Click to close</button>
+      </div>
+    )}
+  >
     <Demo />
   </NotificationsProvider>
 );
