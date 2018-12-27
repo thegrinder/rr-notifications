@@ -63,13 +63,7 @@ const Notifications = ({
 
   return (
     <NotificationsContext.Provider value={{ showNotification, removeNotification }}>
-      <Container
-        position={position}
-        stackNextOn={stackNextOn}
-        animationDuration={animationDuration}
-        animationEasing={animationEasing}
-        slideFromSide={slideFromSide}
-      >
+      <Container position={position}>
         {notifications.map(({ id, payload, isVisible }) => (
           <NotificationContainer
             key={id}

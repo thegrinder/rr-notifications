@@ -2,7 +2,6 @@ import { css } from 'styled-components';
 import {
   convertToCssPosition,
   convertToCssDuration,
-  getPosition,
   getDuration,
 } from '../utils';
 
@@ -31,8 +30,7 @@ describe('utils', () => {
   });
 
   describe('getPosition and getDuration', () => {
-    const position = getPosition;
     const duration = getDuration;
-    expect(css.mock.calls.length).toEqual(2);
+    expect(css.mock.calls.length).toEqual(1);
   });
 });

@@ -1,18 +1,19 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { getPosition } from '../helpers/utils';
+import { convertToCssPosition, getFlexDirection } from '../helpers/utils';
+
+const propTypes = {
+  position: PropTypes.array.isRequired,
+};
 
 const Container = styled.div`
   position: fixed;
   display: flex;
   z-index: 999999;
-  flex-direction: ${props => (props.stackNextOn === 'top' ? 'column-reverse' : 'column')};
-  ${getPosition}
+  flex-direction: ${props => getFlexDirection(props.position)};
+  ${props => convertToCssPosition(props.position)}
 `;
 
-Container.propTypes = {
-  position: PropTypes.array.isRequired,
-  stackNextOn: PropTypes.string.isRequired,
-};
+Container.propTypes = propTypes;
 
 export default Container;
