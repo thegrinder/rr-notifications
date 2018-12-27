@@ -21,7 +21,7 @@ const defaultProps = {
   stackNextOn: 'top',
   animationDuration: 400,
   animationEasing: 'ease',
-  dismissAfter: 10000,
+  dismissAfter: 2000,
   slideFromSide: '',
 };
 
@@ -72,9 +72,9 @@ const Notifications = ({
       >
         {notifications.map(({ id, payload, isVisible }) => (
           <NotificationContainer
-            animatedMargin={position[0] === 'auto' ? 'bottom' : 'top'}
             key={id}
             id={id}
+            animatedMargin={position[0] === 'auto' ? 'bottom' : 'top'}
             hideNotification={hideNotification}
             unmountNotification={unmountNotification}
             animationDuration={animationDuration}

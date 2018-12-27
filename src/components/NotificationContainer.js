@@ -1,4 +1,9 @@
-import React, { Component } from 'react';
+import React, {
+  useLayoutEffect,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import Notification from './Notification';
 
@@ -16,59 +21,50 @@ const propTypes = {
   slideFromSide: PropTypes.string.isRequired,
 };
 
-export class NotificationContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      height: 0,
-    };
-  }
+const NotificationContainer = ({
+  children,
+  id,
+  hideNotification,
+  unmountNotification,
+  animatedMargin,
+  isVisible,
+  animationDuration,
+  animationEasing,
+  dismissAfter,
+  slideFromSide,
+}) => {
+  const notificationRef = useRef(null);
+  const [height, updateHeight] = useState(0);
 
-  componentDidMount() {
-    this.setState({
-      height: this.notification.clientHeight,
-    });
-    const {
-      id,
-      hideNotification,
-      unmountNotification,
-      dismissAfter,
-      animationDuration,
-    } = this.props;
+  useLayoutEffect(() => {
+    if (notificationRef.current) {
+      updateHeight(notificationRef.current.clientHeight);
+    }
+  }, [notificationRef]);
+
+  useEffect(() => {
     setTimeout(() => {
       hideNotification(id);
     }, dismissAfter);
     setTimeout(() => {
       unmountNotification(id);
     }, dismissAfter + animationDuration);
-  }
+  }, isVisible);
 
-  render() {
-    const {
-      children,
-      animatedMargin,
-      isVisible,
-      slideFromSide,
-      animationEasing,
-      animationDuration,
-    } = this.props;
-    const { height } = this.state;
-    return (
-      <div ref={(notification) => { this.notification = notification; }}>
-        <Notification
-          animatedMargin={animatedMargin}
-          notificationHeight={height}
-          isVisible={isVisible}
-          slideFromSide={slideFromSide}
-          animationEasing={animationEasing}
-          animationDuration={animationDuration}
-        >
-          {children}
-        </Notification>
-      </div>
-    );
-  }
-}
+  return (
+    <Notification
+      ref={notificationRef}
+      animatedMargin={animatedMargin}
+      notificationHeight={height}
+      isVisible={isVisible}
+      slideFromSide={slideFromSide}
+      animationEasing={animationEasing}
+      animationDuration={animationDuration}
+    >
+      {children}
+    </Notification>
+  );
+};
 
 NotificationContainer.propTypes = propTypes;
 
