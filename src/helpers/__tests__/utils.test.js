@@ -1,9 +1,4 @@
-import { css } from 'styled-components';
-import {
-  convertToCssPosition,
-  convertToCssDuration,
-  getDuration,
-} from '../utils';
+import { convertToCssPosition, convertToCssDuration } from '../utils';
 
 jest.mock('styled-components');
 
@@ -27,10 +22,5 @@ describe('utils', () => {
       const expected = '0.3s';
       expect(convertToCssDuration(testDuration)).toEqual(expected);
     });
-  });
-
-  describe('getPosition and getDuration', () => {
-    const duration = getDuration;
-    expect(css.mock.calls.length).toEqual(1);
   });
 });
