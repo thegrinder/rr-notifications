@@ -1,4 +1,9 @@
-import { convertToCssPosition, convertToCssDuration } from '../utils';
+import {
+  convertToCssPosition,
+  convertToCssDuration,
+  getFlexDirection,
+  getAnimatedMargin,
+} from '../utils';
 
 jest.mock('styled-components');
 
@@ -21,6 +26,20 @@ describe('utils', () => {
       const testDuration = 300;
       const expected = '0.3s';
       expect(convertToCssDuration(testDuration)).toEqual(expected);
+    });
+  });
+
+  describe('getFlexDirection', () => {
+    it('should return the correct flex-direction', () => {
+      expect(getFlexDirection(['10px', '10px', 'auto', 'auto'])).toEqual('column');
+      expect(getFlexDirection(['auto', 'auto', '10px', '10px'])).toEqual('column-reverse');
+    });
+  });
+
+  describe('getAnimatedMargin', () => {
+    it('should return the correct margin', () => {
+      expect(getAnimatedMargin(['10px', '10px', 'auto', 'auto'])).toEqual('top');
+      expect(getAnimatedMargin(['auto', 'auto', '10px', '10px'])).toEqual('bottom');
     });
   });
 });

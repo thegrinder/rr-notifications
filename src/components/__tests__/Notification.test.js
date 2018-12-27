@@ -5,10 +5,10 @@ import Notification from '../Notification';
 const testProps = {
   isVisible: true,
   notificationHeight: 40,
-  animatedMargin: 'top',
   animationDuration: 400,
   animationEasing: 'ease',
   slideFromSide: 'left',
+  position: ['10px', '10px', 'auto', 'auto'],
 };
 const children = (<p>test</p>);
 const renderComponent = (props = {}) => shallow(
