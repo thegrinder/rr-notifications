@@ -19,7 +19,7 @@ const defaultProps = {
   position: ['40px', '40px', 'auto', 'auto'],
   animationDuration: 400,
   animationEasing: 'ease',
-  dismissAfter: 2000,
+  dismissAfter: 10000,
   slideFromSide: '',
 };
 
@@ -65,7 +65,7 @@ const Notifications = ({
           <NotificationContainer
             key={id}
             id={id}
-            animatedMargin={position[0] === 'auto' ? 'bottom' : 'top'}
+            position={position}
             hideNotification={hideNotification}
             unmountNotification={unmountNotification}
             animationDuration={animationDuration}

@@ -18,8 +18,17 @@ const Demo = () => {
   );
 };
 
+const props = {
+  position: ['auto', 'auto', '40px', '40px'],
+  animationDuration: 400,
+  animationEasing: 'ease',
+  dismissAfter: 2000,
+  slideFromSide: '',
+};
+
 const Wrapper = () => (
   <NotificationsProvider
+    {...props}
     renderNotification={({ payload: { type, text }, removeNotification }) => (
       <div>
         <div style={{ color: type === 'warning' ? 'red' : 'black' }}>{text}</div>

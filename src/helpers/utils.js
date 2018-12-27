@@ -11,3 +11,9 @@ export const getFlexDirection = position => (
     ? 'column'
     : 'column-reverse'
 );
+
+export const getAnimatedMargin = position => (
+  position[COORDINATES.indexOf('top')] !== 'auto'
+    ? 'top'
+    : 'bottom'
+);

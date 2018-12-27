@@ -13,7 +13,7 @@ const propTypes = {
   id: PropTypes.string.isRequired,
   hideNotification: PropTypes.func.isRequired,
   unmountNotification: PropTypes.func.isRequired,
-  animatedMargin: PropTypes.string.isRequired,
+  position: PropTypes.array.isRequired,
   isVisible: PropTypes.bool.isRequired,
   animationDuration: PropTypes.number.isRequired,
   animationEasing: PropTypes.string.isRequired,
@@ -26,7 +26,7 @@ const NotificationContainer = ({
   id,
   hideNotification,
   unmountNotification,
-  animatedMargin,
+  position,
   isVisible,
   animationDuration,
   animationEasing,
@@ -54,7 +54,7 @@ const NotificationContainer = ({
   return (
     <Notification
       ref={notificationRef}
-      animatedMargin={animatedMargin}
+      position={position}
       notificationHeight={height}
       isVisible={isVisible}
       slideFromSide={slideFromSide}
