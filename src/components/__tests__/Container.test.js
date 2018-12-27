@@ -3,7 +3,6 @@ import { shallow, mount } from 'enzyme';
 import Container from '../Container';
 
 const position = ['20px', '30px', 'auto', 'auto'];
-const stackNextOn = 'top';
 const children = (<p>test</p>);
 const renderComponent = (props = {}) => shallow(
   <Container {...props}>
@@ -16,18 +15,17 @@ const mountComponent = (props = {}) => mount(
 
 describe('<Container />', () => {
   it('should render <div> tag', () => {
-    const renderedComponent = renderComponent({ position, stackNextOn });
+    const renderedComponent = renderComponent({ position });
     expect(renderedComponent).toBeDefined();
   });
 
   it('should have children', () => {
-    const renderedComponent = renderComponent({ position, stackNextOn });
+    const renderedComponent = renderComponent({ position });
     expect(renderedComponent.contains(children)).toEqual(true);
   });
 
-  it('should accept position and stackNextOn props', () => {
-    const mountedComponent = mountComponent({ position, stackNextOn });
+  it('should accept position  props', () => {
+    const mountedComponent = mountComponent({ position });
     expect(mountedComponent.prop('position')).toEqual(position);
-    expect(mountedComponent.prop('stackNextOn')).toEqual(stackNextOn);
   });
 });

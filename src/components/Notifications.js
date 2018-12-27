@@ -9,7 +9,6 @@ const propTypes = {
   children: PropTypes.node.isRequired,
   renderNotification: PropTypes.func.isRequired,
   position: PropTypes.array,
-  stackNextOn: PropTypes.string,
   animationDuration: PropTypes.number,
   animationEasing: PropTypes.string,
   dismissAfter: PropTypes.number,
@@ -18,7 +17,6 @@ const propTypes = {
 
 const defaultProps = {
   position: ['40px', '40px', 'auto', 'auto'],
-  stackNextOn: 'top',
   animationDuration: 400,
   animationEasing: 'ease',
   dismissAfter: 2000,
@@ -29,7 +27,6 @@ const Notifications = ({
   children,
   renderNotification,
   position,
-  stackNextOn,
   animationDuration,
   animationEasing,
   slideFromSide,
