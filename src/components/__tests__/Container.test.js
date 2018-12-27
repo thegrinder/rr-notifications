@@ -14,7 +14,7 @@ const mountComponent = (props = {}) => mount(
 );
 
 describe('<Container />', () => {
-  it('should render <div> tag', () => {
+  it('should render correctly', () => {
     const renderedComponent = renderComponent({ position });
     expect(renderedComponent).toBeDefined();
   });

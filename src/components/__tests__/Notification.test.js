@@ -24,7 +24,7 @@ const mountComponent = (props = {}) => mount(
 );
 
 describe('<Notification />', () => {
-  it('should render <div> tag', () => {
+  it('should render correctly', () => {
     const renderedComponent = renderComponent(testProps);
     expect(renderedComponent.type()).toBeDefined();
   });
