@@ -1,10 +1,9 @@
 {
   "name": "rr-notifications",
   "version": "0.5.0",
-  "description": "Flexible react-redux notification system",
+  "description": "Flexible react notification system",
   "keywords": [
     "react",
-    "redux",
     "styled-components",
     "notifications"
   ],
