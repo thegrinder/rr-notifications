@@ -23,7 +23,7 @@ const defaultProps = {
   slideFromSide: '',
 };
 
-const Notifications = ({
+const NotificationsProvider = ({
   children,
   renderNotification,
   position,
@@ -86,7 +86,7 @@ const Notifications = ({
   );
 };
 
-Notifications.propTypes = propTypes;
-Notifications.defaultProps = defaultProps;
+NotificationsProvider.propTypes = propTypes;
+NotificationsProvider.defaultProps = defaultProps;
 
-export default Notifications;
+export default NotificationsProvider;

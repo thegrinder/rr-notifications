@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { mount } from 'enzyme';
-import Notifications, { NotificationsContext } from '../Notifications';
+import NotificationsProvider, { NotificationsContext } from '../NotificationsProvider';
 
 const TestChild = () => {
   const { showNotification } = useContext(NotificationsContext);
@@ -31,12 +31,12 @@ const optionalProps = {
 };
 
 const mountComponent = (props = {}) => mount(
-  <Notifications {...requiredProps} {...props}>
+  <NotificationsProvider {...requiredProps} {...props}>
     {children}
-  </Notifications>,
+  </NotificationsProvider>,
 );
 
-describe('<Notifications />', () => {
+describe('<NotificationsProvider />', () => {
   it('should render correctly', () => {
     const mountedComponent = mountComponent();
     expect(mountedComponent).toBeDefined();

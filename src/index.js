@@ -1,4 +1,4 @@
-import NotificationsProvider, { NotificationsContext } from './components/Notifications';
+import NotificationsProvider, { NotificationsContext } from './components/NotificationsProvider';
 
 export {
   NotificationsProvider,
