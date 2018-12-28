@@ -2,6 +2,7 @@ const PATHS = require('./paths');
 
 const prodConfig = {
   mode: 'production',
+  devtool: 'source-map',
   entry: [
     PATHS.src,
   ],
