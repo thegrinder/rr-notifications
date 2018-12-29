@@ -29,7 +29,8 @@ const prodConfig = {
   externals: [
     'react',
     'react-dom',
-    'webpack',
+    'prop-types',
+    'styled-components',
   ],
 };
 
