@@ -10,6 +10,7 @@ const Container = styled.div`
   position: fixed;
   display: flex;
   z-index: 999999;
+  height: 0;
   flex-direction: ${props => getFlexDirection(props.position)};
   ${props => convertToCssPosition(props.position)}
 `;
