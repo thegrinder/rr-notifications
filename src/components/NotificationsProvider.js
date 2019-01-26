@@ -32,36 +32,46 @@ const NotificationsProvider = ({
   slideFromSide,
   dismissAfter,
 }) => {
-  const [notifications, updateNotifications] = useState([]);
-  const showNotification = (payload = {}) => updateNotifications(state => (
-    state.concat({
-      id: Date.now().toString(),
-      isVisible: true,
-      payload,
-    })
-  ));
-  const hideNotification = id => updateNotifications(state => (
-    state.map(notification => (
-      notification.id === id
-        ? {
-          ...notification,
-          isVisible: false,
-        }
-        : notification
-    ))
-  ));
+  const [notifications, updateNotifications] = useState({});
+
+  const showNotification = (payload = {}) => updateNotifications((state) => {
+    const id = Date.now().toString();
+    return {
+      ...state,
+      [id]: {
+        id,
+        isVisible: true,
+        payload,
+      },
+    };
+  });
+
+  const hideNotification = id => updateNotifications(state => ({
+    ...state,
+    [id]: {
+      ...state[id],
+      isVisible: false,
+    },
+  }));
+
   const unmountNotification = id => updateNotifications(state => (
-    state.filter(notification => notification.id !== id)
+    Object.keys(state)
+      .filter(notificationId => notificationId !== id)
+      .reduce((acc, notificationId) => ({
+        ...acc,
+        [notificationId]: state[notificationId],
+      }), {})
   ));
+
   const removeNotification = id => () => {
     hideNotification(id);
-    setTimeout(() => unmountNotification(id), 10000);
+    setTimeout(() => unmountNotification(id), animationDuration);
   };
 
   return (
     <NotificationsContext.Provider value={{ showNotification, removeNotification }}>
       <Container position={position}>
-        {notifications.map(({ id, payload, isVisible }) => (
+        {Object.values(notifications).map(({ id, payload, isVisible }) => (
           <NotificationContainer
             key={id}
             id={id}

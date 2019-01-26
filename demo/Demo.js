@@ -19,7 +19,7 @@ const Demo = () => {
 };
 
 const props = {
-  position: ['auto', 'auto', '40px', '40px'],
+  position: ['80px', '40px', 'auto', 'auto'],
   animationDuration: 400,
   animationEasing: 'ease',
   dismissAfter: 2000,
