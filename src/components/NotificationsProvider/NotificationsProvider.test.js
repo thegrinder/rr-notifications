@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { mount } from 'enzyme';
-import NotificationsProvider, { NotificationsContext } from '../NotificationsProvider';
+import NotificationsProvider, { NotificationsContext } from './NotificationsProvider';
 
 const TestChild = () => {
   const { showNotification } = useContext(NotificationsContext);

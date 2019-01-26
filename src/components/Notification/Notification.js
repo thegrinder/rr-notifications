@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { convertToCssDuration, getAnimatedMargin } from '../helpers/utils';
+import { convertToCssDuration, getAnimatedMargin } from '../../helpers/utils';
 import {
   horizontalShow,
   horizontalHide,
   verticalShow,
   verticalHide,
-} from '../animations/animations';
+} from '../../animations/animations';
 
 const propTypes = {
   isVisible: PropTypes.bool.isRequired,

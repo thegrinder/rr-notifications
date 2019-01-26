@@ -4,3 +4,53 @@ route: '/'
 ---
 
 # rr-notifications
+
+rr-notifications is a flexible and customizable react notification system. Create your own notification component with the content you want,
+style it however you want and with technology of your choice and it will work.
+
+### Example
+
+import { Playground } from 'docz';
+import { useContext } from 'react';
+import { NotificationsProvider, NotificationsContext } from './'
+
+
+```js
+import React { useContext } from 'react';
+import { NotificationsContext } from 'rr-notifications';
+
+const Demo = () => {
+  const { showNotification } = useContext(NotificationsContext);
+  return (
+    <div>
+      <button onClick={showNotification({ text: 'notification' })}>
+        Add notification
+      </button>
+    </div>
+  );
+};
+```
+
+```js
+import { NotificationsProvider } from 'rr-notifications';
+import Demo from 'path/to/demo';
+
+const App = () => {
+  <NotificationsProvider
+    position={[ '80px', '80px', 'auto', 'auto']}
+    animationDuration={400}
+    animationEasing="ease"
+    slideFromSide="right"
+    renderNotification={({ removeNotification, payload }) => (
+      <div>
+        <p>{payload.text}</p>
+        <button type="button" onClick={removeNotification}>
+          Click to close
+        </button>
+      </div>
+    )}
+  >
+    <Demo />
+  </NotificationsProvider>
+};
+```

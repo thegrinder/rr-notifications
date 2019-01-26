@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Notification from '../Notification';
+import Notification from './Notification';
 
 const testProps = {
   isVisible: true,

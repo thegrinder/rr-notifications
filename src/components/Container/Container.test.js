@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-import Container from '../Container';
+import Container from './Container';
 
 const position = ['20px', '30px', 'auto', 'auto'];
 const children = (<p>test</p>);

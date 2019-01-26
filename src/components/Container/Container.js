@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { convertToCssPosition, getFlexDirection } from '../helpers/utils';
+import { convertToCssPosition, getFlexDirection } from '../../helpers/utils';
 
 const propTypes = {
   position: PropTypes.array.isRequired,

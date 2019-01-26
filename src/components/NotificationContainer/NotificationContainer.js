@@ -4,7 +4,7 @@ import React, {
   useState,
 } from 'react';
 import PropTypes from 'prop-types';
-import Notification from './Notification';
+import Notification from '../Notification/Notification';
 
 
 const propTypes = {
