@@ -19,7 +19,9 @@
     "prepublishOnly": "npm run production",
     "lint": "eslint src/.; exit 0",
     "fix": "eslint --fix src/.; exit 0",
-    "test": "jest"
+    "test": "jest",
+    "docz:dev": "docz dev",
+    "deploy:docz": "yarn docz build && gh-pages -d .docz/dist"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/setupTests.js"
@@ -42,6 +44,7 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
+    "gh-pages": "^2.0.1",
     "jest": "^23.6.0",
     "react-addons-test-utils": "^15.6.2",
     "react-test-renderer": "^16.7.0",
@@ -49,6 +52,8 @@
     "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
+    "docz": "^0.13.7",
+    "docz-theme-default": "^0.13.7",
     "html-webpack-plugin": "^3.2.0",
     "prop-types": "^15.6.2",
     "react": "^16.7.0-alpha.2",
