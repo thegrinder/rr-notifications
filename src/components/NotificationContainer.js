@@ -1,6 +1,5 @@
 import React, {
   useLayoutEffect,
-  useEffect,
   useRef,
   useState,
 } from 'react';
@@ -10,27 +9,19 @@ import Notification from './Notification';
 
 const propTypes = {
   children: PropTypes.node.isRequired,
-  id: PropTypes.string.isRequired,
-  hideNotification: PropTypes.func.isRequired,
-  unmountNotification: PropTypes.func.isRequired,
   position: PropTypes.array.isRequired,
   isVisible: PropTypes.bool.isRequired,
   animationDuration: PropTypes.number.isRequired,
   animationEasing: PropTypes.string.isRequired,
-  dismissAfter: PropTypes.number.isRequired,
   slideFromSide: PropTypes.string.isRequired,
 };
 
 const NotificationContainer = ({
   children,
-  id,
-  hideNotification,
-  unmountNotification,
   position,
   isVisible,
   animationDuration,
   animationEasing,
-  dismissAfter,
   slideFromSide,
 }) => {
   const notificationRef = useRef(null);
@@ -41,15 +32,6 @@ const NotificationContainer = ({
       updateHeight(notificationRef.current.clientHeight);
     }
   }, [notificationRef]);
-
-  useEffect(() => {
-    setTimeout(() => {
-      hideNotification(id);
-    }, dismissAfter);
-    setTimeout(() => {
-      unmountNotification(id);
-    }, dismissAfter + animationDuration);
-  }, isVisible);
 
   return (
     <Notification

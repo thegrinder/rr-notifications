@@ -7,7 +7,7 @@ const Demo = () => {
     <div>
       <button
         type="button"
-        onClick={() => showNotification({
+        onClick={showNotification({
           type: 'warning',
           text: 'This is a warning',
         })}
@@ -22,7 +22,7 @@ const props = {
   position: ['80px', '40px', 'auto', 'auto'],
   animationDuration: 400,
   animationEasing: 'ease',
-  dismissAfter: 2000,
+  dismissAfter: 20000,
   slideFromSide: '',
 };
 

@@ -12,7 +12,7 @@ Prop    | Type   | Default   | Required | Description
 :-------|:------:|:---------:|:--------:|:----------------------------------------
 position | array | ['40px', '40px', 'auto', 'auto'] | no | Fixed position where notifications are displayed
 slideFromSide | 'right', 'left' | '' | no | Horizontal direction which notification appears from. If not provided, the notification will appear from top or bottom, depending on position prop
-dismissAfter | number | 10000 | no | Time in ms after which the notification disappears
+dismissAfter | number | 6000 | no | Time in ms after which the notification disappears
 animationDuration | number | 400 | no | Duration of the show and hide animation in miliseconds
 animationEasing | string | 'ease' | no | Animation timing function / cubic-bezier
 

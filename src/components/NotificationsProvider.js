@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Container from './Container';
 import NotificationContainer from './NotificationContainer';
@@ -19,7 +19,7 @@ const defaultProps = {
   position: ['40px', '40px', 'auto', 'auto'],
   animationDuration: 400,
   animationEasing: 'ease',
-  dismissAfter: 10000,
+  dismissAfter: 6000,
   slideFromSide: '',
 };
 
@@ -32,19 +32,9 @@ const NotificationsProvider = ({
   slideFromSide,
   dismissAfter,
 }) => {
-  const [notifications, updateNotifications] = useState({});
+  const timers = useRef({});
 
-  const showNotification = (payload = {}) => updateNotifications((state) => {
-    const id = Date.now().toString();
-    return {
-      ...state,
-      [id]: {
-        id,
-        isVisible: true,
-        payload,
-      },
-    };
-  });
+  const [notifications, updateNotifications] = useState({});
 
   const hideNotification = id => updateNotifications(state => ({
     ...state,
@@ -64,9 +54,25 @@ const NotificationsProvider = ({
   ));
 
   const removeNotification = id => () => {
+    clearTimeout(timers.current[id]);
     hideNotification(id);
     setTimeout(() => unmountNotification(id), animationDuration);
   };
+
+  const showNotification = (payload = {}) => () => updateNotifications((state) => {
+    const id = Date.now().toString();
+    timers.current[id] = setTimeout(() => {
+      removeNotification(id)();
+    }, dismissAfter);
+    return {
+      ...state,
+      [id]: {
+        id,
+        isVisible: true,
+        payload,
+      },
+    };
+  });
 
   return (
     <NotificationsContext.Provider value={{ showNotification, removeNotification }}>
@@ -74,10 +80,7 @@ const NotificationsProvider = ({
         {Object.values(notifications).map(({ id, payload, isVisible }) => (
           <NotificationContainer
             key={id}
-            id={id}
             position={position}
-            hideNotification={hideNotification}
-            unmountNotification={unmountNotification}
             animationDuration={animationDuration}
             animationEasing={animationEasing}
             slideFromSide={slideFromSide}
