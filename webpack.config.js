@@ -1,4 +1,10 @@
-const PATHS = require('./paths');
+const path = require('path');
+
+const PATHS = {
+  src: path.join(__dirname, 'src'),
+  build: path.join(__dirname, 'dist'),
+};
+
 
 const prodConfig = {
   mode: 'production',
@@ -20,7 +26,6 @@ const prodConfig = {
         test: /\.(js)$/,
         use: 'babel-loader',
         exclude: [
-          PATHS.demo,
           /node_modules/,
         ],
       },
@@ -29,7 +34,6 @@ const prodConfig = {
   externals: [
     'react',
     'react-dom',
-    'prop-types',
     'styled-components',
   ],
 };

@@ -14,8 +14,7 @@
   },
   "main": "./dist/index.js",
   "scripts": {
-    "start": "webpack-dev-server --config config/webpack.dev.js",
-    "production": "NODE_ENV=production webpack -p --config config/webpack.prod.js",
+    "production": "NODE_ENV=production webpack -p",
     "prepublishOnly": "npm run production",
     "lint": "eslint src/.; exit 0",
     "fix": "eslint --fix src/.; exit 0",
@@ -54,7 +53,6 @@
   "dependencies": {
     "docz": "^0.13.7",
     "docz-theme-default": "^0.13.7",
-    "html-webpack-plugin": "^3.2.0",
     "prop-types": "^15.6.2",
     "react": "^16.7.0-alpha.2",
     "react-dom": "^16.7.0-alpha.2",
