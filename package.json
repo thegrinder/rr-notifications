@@ -16,6 +16,7 @@
   "scripts": {
     "start": "webpack-dev-server --config config/webpack.dev.js",
     "production": "NODE_ENV=production webpack -p --config config/webpack.prod.js",
+    "prepublishOnly": "npm run production",
     "lint": "eslint src/.; exit 0",
     "fix": "eslint --fix src/.; exit 0",
     "test": "jest"
