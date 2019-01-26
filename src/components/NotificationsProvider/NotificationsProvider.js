@@ -69,7 +69,7 @@ const NotificationsProvider = ({
     setTimeout(() => unmountNotification(id), animationDuration);
   };
 
-  const showNotification = (payload = {}) => () => updateNotifications((state) => {
+  const showNotification = (payload = {}) => updateNotifications((state) => {
     const id = Date.now().toString();
     timers.current[id] = setTimeout(() => {
       removeNotification(id)();

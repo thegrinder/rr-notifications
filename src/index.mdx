@@ -23,7 +23,7 @@ const Demo = () => {
   const { showNotification } = useContext(NotificationsContext);
   return (
     <div>
-      <button onClick={showNotification({ text: 'notification' })}>
+      <button onClick={() => showNotification({ text: 'notification' })}>
         Add notification
       </button>
     </div>
