@@ -1,15 +1,15 @@
 {
-  "vendors.js": "/static/js/vendors.1af1ac82.js",
-  "vendors.js.map": "/static/js/vendors.43407555df34f86f2770.js.map",
-  "app.js": "/static/js/app.1fe7540e.js",
-  "app.js.map": "/static/js/app.43407555df34f86f2770.js.map",
-  "runtime~app.js": "/static/js/runtime~app.43407555df34f86f2770.js",
-  "runtime~app.js.map": "/static/js/runtime~app.43407555df34f86f2770.js.map",
-  "src-components-notifications-provider-notifications-provider.js": "/static/js/src-components-notifications-provider-notifications-provider.cfbf4307.js",
-  "src-components-notifications-provider-notifications-provider.js.map": "/static/js/src-components-notifications-provider-notifications-provider.43407555df34f86f2770.js.map",
-  "src-index.js": "/static/js/src-index.4a0f277e.js",
-  "src-index.js.map": "/static/js/src-index.43407555df34f86f2770.js.map",
-  "static/js/5.32720314.js": "/static/js/5.32720314.js",
-  "static/js/5.43407555df34f86f2770.js.map": "/static/js/5.43407555df34f86f2770.js.map",
-  "index.html": "/index.html"
+  "vendors.js": "/rr-notifications/static/js/vendors.9e756185.js",
+  "vendors.js.map": "/rr-notifications/static/js/vendors.8f30a22d1c06a068ece3.js.map",
+  "app.js": "/rr-notifications/static/js/app.4cb77db3.js",
+  "app.js.map": "/rr-notifications/static/js/app.8f30a22d1c06a068ece3.js.map",
+  "runtime~app.js": "/rr-notifications/static/js/runtime~app.8f30a22d1c06a068ece3.js",
+  "runtime~app.js.map": "/rr-notifications/static/js/runtime~app.8f30a22d1c06a068ece3.js.map",
+  "src-components-notifications-provider-notifications-provider.js": "/rr-notifications/static/js/src-components-notifications-provider-notifications-provider.cfbf4307.js",
+  "src-components-notifications-provider-notifications-provider.js.map": "/rr-notifications/static/js/src-components-notifications-provider-notifications-provider.8f30a22d1c06a068ece3.js.map",
+  "src-index.js": "/rr-notifications/static/js/src-index.4a0f277e.js",
+  "src-index.js.map": "/rr-notifications/static/js/src-index.8f30a22d1c06a068ece3.js.map",
+  "static/js/5.32720314.js": "/rr-notifications/static/js/5.32720314.js",
+  "static/js/5.8f30a22d1c06a068ece3.js.map": "/rr-notifications/static/js/5.8f30a22d1c06a068ece3.js.map",
+  "index.html": "/rr-notifications/index.html"
 }
