@@ -1,6 +1,6 @@
 {
   "name": "rr-notifications",
-  "version": "0.6.6",
+  "version": "0.7.0",
   "description": "Flexible react notification system",
   "keywords": [
     "react",
