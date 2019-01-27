@@ -5,6 +5,26 @@ const PATHS = {
   build: path.join(__dirname, 'dist'),
 };
 
+const reactExternal = {
+  root: 'React',
+  commonjs2: 'react',
+  commonjs: 'react',
+  amd: 'react',
+};
+
+const reactDOMExternal = {
+  root: 'ReactDOM',
+  commonjs2: 'react-dom',
+  commonjs: 'react-dom',
+  amd: 'react-dom',
+};
+
+const styledComponentsExternal = {
+  root: 'styled',
+  commonjs2: 'styled-components',
+  commonjs: 'styled-components',
+  amd: 'styled-components',
+};
 
 const prodConfig = {
   mode: 'production',
@@ -31,11 +51,11 @@ const prodConfig = {
       },
     ],
   },
-  externals: [
-    'react',
-    'react-dom',
-    'styled-components',
-  ],
+  externals: {
+    react: reactExternal,
+    'react-dom': reactDOMExternal,
+    'styled-components': styledComponentsExternal,
+  },
 };
 
 module.exports = prodConfig;
