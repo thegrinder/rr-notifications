@@ -1,6 +1,6 @@
 {
   "name": "rr-notifications",
-  "version": "0.7.2",
+  "version": "0.0.0-development",
   "description": "Flexible react notification system",
   "keywords": [
     "react",
@@ -20,7 +20,8 @@
     "fix": "eslint --fix src/.; exit 0",
     "test": "jest",
     "docz:dev": "docz dev",
-    "deploy:docz": "yarn docz build && gh-pages -d .docz/dist"
+    "deploy:docz": "yarn docz build && gh-pages -d .docz/dist",
+    "semantic-release": "semantic-release"
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/setupTests.js"
@@ -43,6 +44,8 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
+    "@semantic-release/git": "^7.0.8",
+    "@semantic-release/npm": "^5.1.4",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.0.0",
@@ -64,6 +67,7 @@
     "react-addons-test-utils": "^15.6.2",
     "react-dom": "^16.8.2",
     "react-test-renderer": "^16.7.0",
+    "semantic-release": "^15.13.3",
     "styled-components": "^4.1.3",
     "webpack": "4.28.4",
     "webpack-cli": "^3.1.2",
