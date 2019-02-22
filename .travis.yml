@@ -1,0 +1,25 @@
+language: node_js
+
+node_js:
+  - 8
+
+jobs:
+  include:
+    - stage: release
+      node_js: lts/*
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script:
+          - npm run semantic-release
+    - stage: docs
+      script:
+        - npm run docz:build
+      deploy:
+        provider: pages
+        skip-cleanup: true
+        github-token: $GH_TOKEN
+        keep-history: true
+        local-dir: .docz/dist
+        on:
+          branch: master

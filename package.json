@@ -21,7 +21,7 @@
     "fix": "eslint --fix src/.; exit 0",
     "test": "jest",
     "docz:dev": "docz dev",
-    "deploy:docz": "yarn docz build && gh-pages -d .docz/dist",
+    "docz:build": "docz build && gh-pages -d .docz/dist",
     "semantic-release": "semantic-release"
   },
   "config": {
