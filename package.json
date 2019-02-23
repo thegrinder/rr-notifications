@@ -20,8 +20,9 @@
     "lint": "eslint src/.; exit 0",
     "fix": "eslint --fix src/.; exit 0",
     "test": "jest",
+    "docz:build": "docz build",
     "docz:dev": "docz dev",
-    "docz:build": "docz build && gh-pages -d .docz/dist",
+    "docz:deploy": "docz build && gh-pages -d .docz/dist",
     "semantic-release": "semantic-release"
   },
   "config": {
