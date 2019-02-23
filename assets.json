@@ -1,15 +1,15 @@
 {
-  "vendors.js": "/rr-notifications/static/js/vendors.284032c4.js",
-  "vendors.js.map": "/rr-notifications/static/js/vendors.e5dc52eb77885390c27e.js.map",
+  "vendors.js": "/rr-notifications/static/js/vendors.d7febfe2.js",
+  "vendors.js.map": "/rr-notifications/static/js/vendors.e50f73482fb7063abd61.js.map",
   "app.js": "/rr-notifications/static/js/app.75649c54.js",
-  "app.js.map": "/rr-notifications/static/js/app.e5dc52eb77885390c27e.js.map",
-  "runtime~app.js": "/rr-notifications/static/js/runtime~app.e5dc52eb77885390c27e.js",
-  "runtime~app.js.map": "/rr-notifications/static/js/runtime~app.e5dc52eb77885390c27e.js.map",
+  "app.js.map": "/rr-notifications/static/js/app.e50f73482fb7063abd61.js.map",
+  "runtime~app.js": "/rr-notifications/static/js/runtime~app.e50f73482fb7063abd61.js",
+  "runtime~app.js.map": "/rr-notifications/static/js/runtime~app.e50f73482fb7063abd61.js.map",
   "src-components-notifications-provider-notifications-provider.js": "/rr-notifications/static/js/src-components-notifications-provider-notifications-provider.9dd0952d.js",
-  "src-components-notifications-provider-notifications-provider.js.map": "/rr-notifications/static/js/src-components-notifications-provider-notifications-provider.e5dc52eb77885390c27e.js.map",
+  "src-components-notifications-provider-notifications-provider.js.map": "/rr-notifications/static/js/src-components-notifications-provider-notifications-provider.e50f73482fb7063abd61.js.map",
   "src-index.js": "/rr-notifications/static/js/src-index.4159f2ec.js",
-  "src-index.js.map": "/rr-notifications/static/js/src-index.e5dc52eb77885390c27e.js.map",
+  "src-index.js.map": "/rr-notifications/static/js/src-index.e50f73482fb7063abd61.js.map",
   "static/js/5.3223a512.js": "/rr-notifications/static/js/5.3223a512.js",
-  "static/js/5.e5dc52eb77885390c27e.js.map": "/rr-notifications/static/js/5.e5dc52eb77885390c27e.js.map",
+  "static/js/5.e50f73482fb7063abd61.js.map": "/rr-notifications/static/js/5.e50f73482fb7063abd61.js.map",
   "index.html": "/rr-notifications/index.html"
 }
