@@ -1,34 +1,41 @@
 {
-  parser: "babel-eslint",
-  env: {
-    es6: true,
-    browser: true,
-    jest: true
+  "parser": "babel-eslint",
+  "env": {
+    "es6": true,
+    "browser": true,
+    "jest": true
   },
-  extends: "airbnb",
-  plugins: ["react"],
-    parserOptions: {
-    ecmaFeatures: {
-      jsx: true
+  "extends": "airbnb",
+  "plugins": [
+    "react"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     }
   },
-  rules: {
+  "rules": {
     "react/jsx-uses-react": "error",
     "react/jsx-filename-extension": "off",
     "no-underscore-dangle": "off",
     "import/prefer-default-export": "off",
     "import/no-named-as-default": "off",
     "react/forbid-prop-types": "off",
-    "object-curly-newline": ["error", {
-      "ImportDeclaration": { "multiline": true, "minProperties": 4 }
-    }],
-    "quotes": ["error", "single", { "allowTemplateLiterals": true }]
-  },
-  settings: {
-    "import/resolver": {
-      webpack: {
-        config: "./config/webpack.dev.js"
+    "object-curly-newline": [
+      "error",
+      {
+        "ImportDeclaration": {
+          "multiline": true,
+          "minProperties": 4
+        }
       }
-    }
+    ],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "allowTemplateLiterals": true
+      }
+    ]
   }
 }

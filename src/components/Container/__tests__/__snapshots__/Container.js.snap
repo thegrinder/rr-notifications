@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Container /> should render correctly 1`] = `
+<div
+  class="sc-bdVaJa dpnMcW"
+>
+  <p>
+    test
+  </p>
+</div>
+`;
