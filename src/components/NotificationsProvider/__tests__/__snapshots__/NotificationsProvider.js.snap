@@ -12,7 +12,7 @@ exports[`<NotificationsProvider /> should render correctly with custom props 1`]
 />
 `;
 
-exports[`<NotificationsProvider /> should render two notifications 1`] = `
+exports[`<NotificationsProvider /> should render two notifications and then close them 1`] = `
 <div>
   <div
     class="sc-bdVaJa bPYOLZ"
@@ -21,14 +21,22 @@ exports[`<NotificationsProvider /> should render two notifications 1`] = `
       class="sc-bwzfXH fsdYYp"
     >
       <div>
-        notification
+        <button
+          type="button"
+        >
+          notification
+        </button>
       </div>
     </div>
     <div
       class="sc-bwzfXH fsdYYp"
     >
       <div>
-        notification
+        <button
+          type="button"
+        >
+          notification
+        </button>
       </div>
     </div>
   </div>
