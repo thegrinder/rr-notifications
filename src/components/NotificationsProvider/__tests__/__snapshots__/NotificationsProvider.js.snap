@@ -11,3 +11,31 @@ exports[`<NotificationsProvider /> should render correctly with custom props 1`]
   class="sc-bdVaJa bPYOLZ"
 />
 `;
+
+exports[`<NotificationsProvider /> should render two notifications 1`] = `
+<div>
+  <div
+    class="sc-bdVaJa bPYOLZ"
+  >
+    <div
+      class="sc-bwzfXH fsdYYp"
+    >
+      <div>
+        notification
+      </div>
+    </div>
+    <div
+      class="sc-bwzfXH fsdYYp"
+    >
+      <div>
+        notification
+      </div>
+    </div>
+  </div>
+  <button
+    type="button"
+  >
+    show notification
+  </button>
+</div>
+`;
