@@ -12,7 +12,7 @@ exports[`<NotificationsProvider /> should render correctly with custom props 1`]
 />
 `;
 
-exports[`<NotificationsProvider /> should render two notifications and then close them 1`] = `
+exports[`<NotificationsProvider /> should render two notifications 1`] = `
 <div>
   <div
     class="sc-bdVaJa bPYOLZ"

@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { render, cleanup, fireEvent } from 'react-testing-library';
+import {
+  render, cleanup, fireEvent, act,
+} from 'react-testing-library';
 import 'jest-dom/extend-expect';
 
 import NotificationsProvider, { NotificationsContext } from '../NotificationsProvider';
@@ -64,22 +66,16 @@ describe('<NotificationsProvider />', () => {
     expect(firstChild).toMatchSnapshot();
   });
 
-  it('should render two notifications and then close them', () => {
+  it('should render two notifications', () => {
     const { container, getAllByText, getByText } = renderComponent();
     const button = getByText('show notification');
-    fireEvent.click(button);
-    fireEvent.click(button);
+    act(() => {
+      fireEvent.click(button);
+      fireEvent.click(button);
+    });
 
     const notifications = getAllByText('notification');
     expect(notifications.length).toEqual(2);
-    expect(container).toMatchSnapshot();
-
-    fireEvent.click(notifications[0]);
-    expect(notifications.length).toEqual(1);
-    expect(container).toMatchSnapshot();
-
-    fireEvent.click(notifications[0]);
-    expect(notifications.length).toEqual(0);
     expect(container).toMatchSnapshot();
   });
 });
