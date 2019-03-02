@@ -38,6 +38,10 @@
       "git add"
     ]
   },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
+  },
   "author": "Pawel Szczepkowski",
   "license": "MIT",
   "devDependencies": {
