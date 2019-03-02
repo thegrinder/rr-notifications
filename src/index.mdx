@@ -35,15 +35,21 @@ const Demo = () => {
 import { NotificationsProvider } from 'rr-notifications';
 import Demo from 'path/to/demo';
 
-const App = () => {
+const App = () => (
   <NotificationsProvider
     position={[ '80px', '80px', 'auto', 'auto']}
     animationDuration={400}
     animationEasing="ease"
     slideFromSide="right"
     renderNotification={({ removeNotification, payload }) => (
-      <div>
-        <p>{payload.text}</p>
+      <div style={{ 
+        backgroundColor: '#333',
+        padding: '16px', 
+        marginBottom: '8px',
+      }}>
+        <p style={{ color: '#fff' }}>
+          {payload.text}
+        </p>
         <button type="button" onClick={removeNotification}>
           Click to close
         </button>
@@ -52,5 +58,46 @@ const App = () => {
   >
     <Demo />
   </NotificationsProvider>
-};
+);
 ```
+<Playground>
+  {() => {
+    const Demo = () => {
+      const { showNotification } = useContext(NotificationsContext);
+      return (
+        <div>
+          <button onClick={() => showNotification({ text: 'notification' })}>
+            Add notification
+          </button>
+        </div>
+      );
+    };
+
+    const App = () => (
+      <NotificationsProvider
+        position={[ '80px', '80px', 'auto', 'auto']}
+        animationDuration={400}
+        animationEasing="ease"
+        slideFromSide="right"
+        renderNotification={({ removeNotification, payload }) => (
+          <div style={{ 
+            backgroundColor: '#333',
+            padding: '16px', 
+            marginBottom: '8px',
+          }}>
+            <p style={{ color: '#fff' }}>
+              {payload.text}
+            </p>
+            <button type="button" onClick={removeNotification}>
+              Click to close
+            </button>
+          </div>
+        )}
+      >
+        <Demo />
+      </NotificationsProvider>
+    );
+
+    return <App />
+  }}
+</Playground>

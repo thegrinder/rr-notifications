@@ -1,5 +1,8 @@
 import React, { useContext } from 'react';
-import { render, cleanup } from 'react-testing-library';
+import PropTypes from 'prop-types';
+import {
+  render, cleanup, fireEvent, act,
+} from 'react-testing-library';
 import 'jest-dom/extend-expect';
 
 import NotificationsProvider, { NotificationsContext } from '../NotificationsProvider';
@@ -15,11 +18,17 @@ const TestChild = () => {
 
 const children = <TestChild />;
 
-const Notification = () => (
+const Notification = ({ removeNotification }) => (
   <div>
-    notification
+    <button type="button" onClick={removeNotification}>
+      notification
+    </button>
   </div>
 );
+
+Notification.propTypes = {
+  removeNotification: PropTypes.func.isRequired,
+};
 
 const requiredProps = {
   renderNotification: Notification,
@@ -57,10 +66,16 @@ describe('<NotificationsProvider />', () => {
     expect(firstChild).toMatchSnapshot();
   });
 
-  // it('should render two notifications', () => {
-  //   const renderedComponent = renderComponent();
-  //   renderedComponent.find('.show-button').simulate('click');
-  //   renderedComponent.find('.show-button').simulate('click');
-  //   expect(renderedComponent.find('.notification').length).toEqual(2);
-  // });
+  it('should render two notifications', () => {
+    const { container, getAllByText, getByText } = renderComponent();
+    const button = getByText('show notification');
+    act(() => {
+      fireEvent.click(button);
+      fireEvent.click(button);
+    });
+
+    const notifications = getAllByText('notification');
+    expect(notifications.length).toEqual(2);
+    expect(container).toMatchSnapshot();
+  });
 });
