@@ -19,16 +19,15 @@ style it however you want and with technology of your choice and it will work.
 ### Example
 
 import { Playground } from 'docz';
-import { useContext } from 'react';
-import { NotificationsProvider, NotificationsContext } from './'
+import { NotificationsProvider, useNotification } from './'
 
 
 ```js
-import React { useContext } from 'react';
-import { NotificationsContext } from 'rr-notifications';
+import React from 'react';
+import { useNotification } from 'rr-notifications';
 
 const Demo = () => {
-  const { showNotification } = useContext(NotificationsContext);
+  const { showNotification } = useNotification();
   return (
     <div>
       <button onClick={() => showNotification({ text: 'notification' })}>
@@ -71,7 +70,7 @@ const App = () => (
 <Playground>
   {() => {
     const Demo = () => {
-      const { showNotification } = useContext(NotificationsContext);
+      const { showNotification } = useNotification();
       return (
         <div>
           <button onClick={() => showNotification({ text: 'notification' })}>
