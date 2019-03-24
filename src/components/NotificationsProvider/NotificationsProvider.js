@@ -1,4 +1,9 @@
-import React, { createContext, useState, useRef } from 'react';
+import React, {
+  createContext,
+  useState,
+  useRef,
+  useEffect,
+} from 'react';
 import PropTypes from 'prop-types';
 import Container from '../Container/Container';
 import NotificationContainer from '../NotificationContainer/NotificationContainer';
@@ -42,7 +47,8 @@ const NotificationsProvider = ({
   slideFromSide,
   dismissAfter,
 }) => {
-  const timers = useRef({});
+  const automaticDismissalTimers = useRef({});
+  const manualDismissalTimers = useRef({});
 
   const [notifications, updateNotifications] = useState({});
 
@@ -64,14 +70,16 @@ const NotificationsProvider = ({
   ));
 
   const removeNotification = id => () => {
-    clearTimeout(timers.current[id]);
+    clearTimeout(automaticDismissalTimers.current[id]);
     hideNotification(id);
-    setTimeout(() => unmountNotification(id), animationDuration);
+    manualDismissalTimers.current[id] = setTimeout(() => {
+      unmountNotification(id);
+    }, animationDuration);
   };
 
   const showNotification = (payload = {}) => updateNotifications((state) => {
     const id = Date.now().toString();
-    timers.current[id] = setTimeout(() => {
+    automaticDismissalTimers.current[id] = setTimeout(() => {
       removeNotification(id)();
     }, dismissAfter);
     return {
@@ -83,6 +91,16 @@ const NotificationsProvider = ({
       },
     };
   });
+
+  const clearAllTimeouts = () => {
+    [
+      ...Object.values(manualDismissalTimers.current),
+      ...Object.values(automaticDismissalTimers.current),
+    ]
+      .forEach(timeout => clearTimeout(timeout));
+  };
+
+  useEffect(() => clearAllTimeouts, []);
 
   return (
     <NotificationsContext.Provider value={{ showNotification, removeNotification }}>
