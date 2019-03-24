@@ -10,7 +10,7 @@ import NotificationsProvider, { NotificationsContext } from '../NotificationsPro
 const TestChild = () => {
   const { showNotification } = useContext(NotificationsContext);
   return (
-    <button type="button" onClick={showNotification}>
+    <button type="button" onClick={() => showNotification()}>
       show notification
     </button>
   );
