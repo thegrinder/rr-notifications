@@ -10,7 +10,7 @@ import NotificationsProvider, { NotificationsContext } from '../NotificationsPro
 const TestChild = () => {
   const { showNotification } = useContext(NotificationsContext);
   return (
-    <button type="button" onClick={showNotification}>
+    <button type="button" onClick={() => showNotification()}>
       show notification
     </button>
   );
@@ -20,7 +20,7 @@ const children = <TestChild />;
 
 const Notification = ({ removeNotification }) => (
   <div>
-    <button type="button" onClick={removeNotification}>
+    <button type="button" onClick={() => removeNotification()}>
       notification
     </button>
   </div>
@@ -34,9 +34,11 @@ const requiredProps = {
   renderNotification: Notification,
 };
 
+const animationDuration = 400;
+
 const optionalProps = {
+  animationDuration,
   position: ['40px', '40px', 'auto', 'auto'],
-  animationDuration: 400,
   animationEasing: 'ease',
 };
 
@@ -66,16 +68,50 @@ describe('<NotificationsProvider />', () => {
     expect(firstChild).toMatchSnapshot();
   });
 
-  it('should render two notifications', () => {
+  it('should properly handle opening and manually closing notifications', () => {
+    jest.useFakeTimers();
+
     const { container, getAllByText, getByText } = renderComponent();
     const button = getByText('show notification');
+
     act(() => {
-      fireEvent.click(button);
       fireEvent.click(button);
     });
 
-    const notifications = getAllByText('notification');
-    expect(notifications.length).toEqual(2);
+    act(() => {
+      fireEvent.click(button);
+    });
+
+    expect(getAllByText('notification').length).toEqual(2);
     expect(container).toMatchSnapshot();
+    act(() => {
+      fireEvent.click(getAllByText('notification')[0]);
+    });
+    act(() => {
+      jest.advanceTimersByTime(animationDuration);
+    });
+    expect(getAllByText('notification').length).toEqual(1);
+  });
+
+
+  it('should automatically dismiss notifications', () => {
+    jest.useFakeTimers();
+
+    const { queryAllByText, getByText } = renderComponent();
+    const button = getByText('show notification');
+
+    act(() => {
+      fireEvent.click(button);
+    });
+
+    act(() => {
+      fireEvent.click(button);
+    });
+
+    expect(queryAllByText('notification').length).toEqual(2);
+    act(() => {
+      jest.runAllTimers();
+    });
+    expect(queryAllByText('notification').length).toEqual(0);
   });
 });
