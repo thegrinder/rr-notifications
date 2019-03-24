@@ -1,18 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<NotificationsProvider /> should render correctly 1`] = `
-<div
-  class="sc-bdVaJa bPYOLZ"
-/>
-`;
-
-exports[`<NotificationsProvider /> should render correctly with custom props 1`] = `
-<div
-  class="sc-bdVaJa bPYOLZ"
-/>
-`;
-
-exports[`<NotificationsProvider /> should render two notifications 1`] = `
+exports[`<NotificationsProvider /> should properly handle opening and manually closing notifications 1`] = `
 <div>
   <div
     class="sc-bdVaJa bPYOLZ"
@@ -46,4 +34,16 @@ exports[`<NotificationsProvider /> should render two notifications 1`] = `
     show notification
   </button>
 </div>
+`;
+
+exports[`<NotificationsProvider /> should render correctly 1`] = `
+<div
+  class="sc-bdVaJa bPYOLZ"
+/>
+`;
+
+exports[`<NotificationsProvider /> should render correctly with custom props 1`] = `
+<div
+  class="sc-bdVaJa bPYOLZ"
+/>
 `;
