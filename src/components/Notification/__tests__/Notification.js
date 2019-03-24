@@ -22,8 +22,14 @@ const renderComponent = (props = {}) => render(
 describe('<Notification />', () => {
   afterEach(cleanup);
 
-  it('should render correctly', () => {
+  it('should render correctly if visible', () => {
     const { container: { firstChild } } = renderComponent(testProps);
+    expect(firstChild).toBeDefined();
+    expect(firstChild).toMatchSnapshot();
+  });
+
+  it('should render correctly if not visible', () => {
+    const { container: { firstChild } } = renderComponent({ ...testProps, isVisible: false });
     expect(firstChild).toBeDefined();
     expect(firstChild).toMatchSnapshot();
   });
