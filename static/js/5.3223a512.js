@@ -1,2 +1,2 @@
 (window.webpackJsonp=window.webpackJsonp||[]).push([[5],{"./.docz/app/imports.js":function(i,n,o){"use strict";o.r(n),o.d(n,"imports",function(){return r});var r={"src/index.mdx":function(){return Promise.all([o.e(0),o.e(4)]).then(o.bind(null,"./src/index.mdx"))},"src/components/NotificationsProvider/NotificationsProvider.mdx":function(){return Promise.all([o.e(0),o.e(3)]).then(o.bind(null,"./src/components/NotificationsProvider/NotificationsProvider.mdx"))}}}},0,[0,3,4]]);
-//# sourceMappingURL=5.ad34c4f1b872b0668be7.js.map
+//# sourceMappingURL=5.6044fdeee7e48ee2ae72.js.map
