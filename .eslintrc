@@ -7,7 +7,8 @@
   },
   "extends": "airbnb",
   "plugins": [
-    "react"
+    "react",
+    "react-hooks"
   ],
   "parserOptions": {
     "ecmaFeatures": {
@@ -15,6 +16,8 @@
     }
   },
   "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
     "react/jsx-uses-react": "error",
     "react/jsx-filename-extension": "off",
     "no-underscore-dangle": "off",
