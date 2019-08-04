@@ -1,15 +1,11 @@
 {
-  "vendors.js": "/rr-notifications/static/js/vendors.1ccac5fd.js",
-  "vendors.js.map": "/rr-notifications/static/js/vendors.6044fdeee7e48ee2ae72.js.map",
-  "app.js": "/rr-notifications/static/js/app.175036b3.js",
-  "app.js.map": "/rr-notifications/static/js/app.6044fdeee7e48ee2ae72.js.map",
-  "runtime~app.js": "/rr-notifications/static/js/runtime~app.6044fdeee7e48ee2ae72.js",
-  "runtime~app.js.map": "/rr-notifications/static/js/runtime~app.6044fdeee7e48ee2ae72.js.map",
-  "src-components-notifications-provider-notifications-provider.js": "/rr-notifications/static/js/src-components-notifications-provider-notifications-provider.45f6ff1e.js",
-  "src-components-notifications-provider-notifications-provider.js.map": "/rr-notifications/static/js/src-components-notifications-provider-notifications-provider.6044fdeee7e48ee2ae72.js.map",
-  "src-index.js": "/rr-notifications/static/js/src-index.9da233bb.js",
-  "src-index.js.map": "/rr-notifications/static/js/src-index.6044fdeee7e48ee2ae72.js.map",
-  "static/js/5.3223a512.js": "/rr-notifications/static/js/5.3223a512.js",
-  "static/js/5.6044fdeee7e48ee2ae72.js.map": "/rr-notifications/static/js/5.6044fdeee7e48ee2ae72.js.map",
+  "vendors.js": "/rr-notifications/static/js/vendors.db4fa7a5.js",
+  "vendors.js.map": "/rr-notifications/static/js/vendors.12be4753e4c70d29924f.js.map",
+  "app.js": "/rr-notifications/static/js/app.12be4753e4c70d29924f.js",
+  "app.js.map": "/rr-notifications/static/js/app.12be4753e4c70d29924f.js.map",
+  "src-components-notifications-provider-notifications-provider.js": "/rr-notifications/static/js/src-components-notifications-provider-notifications-provider.b6d3471b.js",
+  "src-components-notifications-provider-notifications-provider.js.map": "/rr-notifications/static/js/src-components-notifications-provider-notifications-provider.12be4753e4c70d29924f.js.map",
+  "src-index.js": "/rr-notifications/static/js/src-index.52c6ede0.js",
+  "src-index.js.map": "/rr-notifications/static/js/src-index.12be4753e4c70d29924f.js.map",
   "index.html": "/rr-notifications/index.html"
 }
