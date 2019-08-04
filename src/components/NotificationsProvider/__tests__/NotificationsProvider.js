@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import {
   render, cleanup, fireEvent, act,
-} from 'react-testing-library';
-import 'jest-dom/extend-expect';
+} from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 
 import NotificationsProvider, { NotificationsContext } from '../NotificationsProvider';
 
