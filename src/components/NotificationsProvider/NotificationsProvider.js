@@ -1,8 +1,10 @@
 import React, {
   createContext,
+  useCallback,
   useState,
   useRef,
   useEffect,
+  useMemo,
 } from 'react';
 import PropTypes from 'prop-types';
 import Container from '../Container/Container';
@@ -69,15 +71,15 @@ const NotificationsProvider = ({
       }), {})
   ));
 
-  const removeNotification = id => () => {
+  const removeNotification = useCallback(id => () => {
     clearTimeout(automaticDismissalTimers.current[id]);
     hideNotification(id);
     manualDismissalTimers.current[id] = setTimeout(() => {
       unmountNotification(id);
     }, animationDuration);
-  };
+  }, [animationDuration]);
 
-  const showNotification = (payload = {}) => updateNotifications((state) => {
+  const showNotification = useCallback((payload = {}) => updateNotifications((state) => {
     const id = Date.now().toString();
     automaticDismissalTimers.current[id] = setTimeout(() => {
       removeNotification(id)();
@@ -90,7 +92,7 @@ const NotificationsProvider = ({
         payload,
       },
     };
-  });
+  }), [dismissAfter, removeNotification]);
 
   const clearAllTimeouts = () => {
     [
@@ -102,8 +104,13 @@ const NotificationsProvider = ({
 
   useEffect(() => clearAllTimeouts, []);
 
+  const value = useMemo(() => ({
+    showNotification,
+    removeNotification,
+  }), [removeNotification, showNotification]);
+
   return (
-    <NotificationsContext.Provider value={{ showNotification, removeNotification }}>
+    <NotificationsContext.Provider value={value}>
       <Container position={position}>
         {Object.values(notifications).map(({ id, payload, isVisible }) => (
           <NotificationContainer
