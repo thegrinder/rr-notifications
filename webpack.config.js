@@ -39,6 +39,7 @@ const prodConfig = {
     library: 'rrNotifications',
     libraryTarget: 'umd',
     umdNamedDefine: true,
+    globalObject: 'this',
   },
   module: {
     rules: [
