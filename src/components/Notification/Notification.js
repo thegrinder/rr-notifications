@@ -19,7 +19,7 @@ const propTypes = {
 
 const Notification = styled.div`
   position: relative;
-  z-index: ${props => (props.isVisible ? 999999 : -1)};
+  z-index: ${(props) => (props.isVisible ? 999999 : -1)};
   animation: ${({ isVisible, position, slideFromSide, notificationHeight }) => {
     const animatedMargin = getAnimatedMargin(position);
     if (slideFromSide) {
@@ -31,8 +31,9 @@ const Notification = styled.div`
       ? verticalShow(notificationHeight, animatedMargin)
       : verticalHide(notificationHeight, animatedMargin);
   }};
-  animation-timing-function: ${props => props.animationEasing};
-  animation-duration: ${props => convertToCssDuration(props.animationDuration)};
+  animation-timing-function: ${(props) => props.animationEasing};
+  animation-duration: ${(props) =>
+    convertToCssDuration(props.animationDuration)};
   animation-fill-mode: forwards;
 `;
 

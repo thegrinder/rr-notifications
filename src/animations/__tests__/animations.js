@@ -14,21 +14,21 @@ describe('horizontalShow, horizontalHide, verticalShow, verticalHide', () => {
   const slideFromSide = 'left';
 
   [verticalHide, verticalShow].forEach((animation) => {
-    it('it should call styled-components\' keyframes method', () => {
+    it("it should call styled-components' keyframes method", () => {
       animation(height, animatedMargin);
       expect(keyframes).toBeCalled();
     });
   });
 
   [horizontalHide, horizontalShow].forEach((animation) => {
-    it('it should call styled-components\' keyframes method', () => {
+    it("it should call styled-components' keyframes method", () => {
       animation(height, animatedMargin, slideFromSide);
       expect(keyframes).toBeCalled();
     });
   });
 
   [horizontalHide, horizontalShow].forEach((animation) => {
-    it('it should call styled-components\' keyframes method', () => {
+    it("it should call styled-components' keyframes method", () => {
       animation(height, animatedMargin);
       expect(keyframes).toBeCalled();
     });

@@ -31,15 +31,23 @@ describe('utils', () => {
 
   describe('getFlexDirection', () => {
     it('should return the correct flex-direction', () => {
-      expect(getFlexDirection(['10px', '10px', 'auto', 'auto'])).toEqual('column');
-      expect(getFlexDirection(['auto', 'auto', '10px', '10px'])).toEqual('column-reverse');
+      expect(getFlexDirection(['10px', '10px', 'auto', 'auto'])).toEqual(
+        'column'
+      );
+      expect(getFlexDirection(['auto', 'auto', '10px', '10px'])).toEqual(
+        'column-reverse'
+      );
     });
   });
 
   describe('getAnimatedMargin', () => {
     it('should return the correct margin', () => {
-      expect(getAnimatedMargin(['10px', '10px', 'auto', 'auto'])).toEqual('top');
-      expect(getAnimatedMargin(['auto', 'auto', '10px', '10px'])).toEqual('bottom');
+      expect(getAnimatedMargin(['10px', '10px', 'auto', 'auto'])).toEqual(
+        'top'
+      );
+      expect(getAnimatedMargin(['auto', 'auto', '10px', '10px'])).toEqual(
+        'bottom'
+      );
     });
   });
 });

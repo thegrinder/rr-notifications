@@ -54,60 +54,74 @@ const NotificationsProvider = ({
 
   const [notifications, updateNotifications] = useState({});
 
-  const hideNotification = id => updateNotifications(state => ({
-    ...state,
-    [id]: {
-      ...state[id],
-      isVisible: false,
-    },
-  }));
-
-  const unmountNotification = id => updateNotifications(state => (
-    Object.keys(state)
-      .filter(notificationId => notificationId !== id)
-      .reduce((acc, notificationId) => ({
-        ...acc,
-        [notificationId]: state[notificationId],
-      }), {})
-  ));
-
-  const removeNotification = useCallback(id => () => {
-    clearTimeout(automaticDismissalTimers.current[id]);
-    hideNotification(id);
-    manualDismissalTimers.current[id] = setTimeout(() => {
-      unmountNotification(id);
-    }, animationDuration);
-  }, [animationDuration]);
-
-  const showNotification = useCallback((payload = {}) => updateNotifications((state) => {
-    const id = Date.now().toString();
-    automaticDismissalTimers.current[id] = setTimeout(() => {
-      removeNotification(id)();
-    }, dismissAfter);
-    return {
+  const hideNotification = (id) =>
+    updateNotifications((state) => ({
       ...state,
       [id]: {
-        id,
-        isVisible: true,
-        payload,
+        ...state[id],
+        isVisible: false,
       },
-    };
-  }), [dismissAfter, removeNotification]);
+    }));
+
+  const unmountNotification = (id) =>
+    updateNotifications((state) =>
+      Object.keys(state)
+        .filter((notificationId) => notificationId !== id)
+        .reduce(
+          (acc, notificationId) => ({
+            ...acc,
+            [notificationId]: state[notificationId],
+          }),
+          {}
+        )
+    );
+
+  const removeNotification = useCallback(
+    (id) => () => {
+      clearTimeout(automaticDismissalTimers.current[id]);
+      hideNotification(id);
+      manualDismissalTimers.current[id] = setTimeout(() => {
+        unmountNotification(id);
+      }, animationDuration);
+    },
+    [animationDuration]
+  );
+
+  const showNotification = useCallback(
+    (payload = {}) =>
+      updateNotifications((state) => {
+        const id = Date.now().toString();
+        automaticDismissalTimers.current[id] = setTimeout(() => {
+          removeNotification(id)();
+        }, dismissAfter);
+        return {
+          ...state,
+          [id]: {
+            id,
+            isVisible: true,
+            payload,
+          },
+        };
+      }),
+    [dismissAfter, removeNotification]
+  );
 
   const clearAllTimeouts = () => {
     [
       ...Object.values(manualDismissalTimers.current),
       ...Object.values(automaticDismissalTimers.current),
-    ]
-      .forEach(timeout => clearTimeout(timeout));
+    ].forEach((timeout) => clearTimeout(timeout));
   };
 
   useEffect(() => clearAllTimeouts, []);
 
-  const value = useMemo(() => ({
-    showNotification,
-    removeNotification,
-  }), [removeNotification, showNotification]);
+  const value = useMemo(
+    () => ({
+      showNotification,
+      removeNotification,
+    }),
+    [removeNotification, showNotification]
+  );
 
   return (
     <NotificationsContext.Provider value={value}>

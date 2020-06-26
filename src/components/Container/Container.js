@@ -11,8 +11,8 @@ const Container = styled.div`
   display: flex;
   z-index: 999999;
   height: 0;
-  flex-direction: ${props => getFlexDirection(props.position)};
-  ${props => convertToCssPosition(props.position)}
+  flex-direction: ${(props) => getFlexDirection(props.position)};
+  ${(props) => convertToCssPosition(props.position)}
 `;
 
 Container.propTypes = propTypes;

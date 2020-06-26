@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import {
-  render, cleanup, fireEvent, act,
-} from '@testing-library/react';
+import { render, cleanup, fireEvent, act } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import NotificationsProvider, { NotificationsContext } from '../NotificationsProvider';
+import NotificationsProvider, {
+  NotificationsContext,
+} from '../NotificationsProvider';
 
 const TestChild = () => {
   const { showNotification } = useContext(NotificationsContext);
@@ -42,17 +42,20 @@ const optionalProps = {
   animationEasing: 'ease',
 };
 
-const renderComponent = (props = {}) => render(
-  <NotificationsProvider {...requiredProps} {...props}>
-    {children}
-  </NotificationsProvider>,
-);
+const renderComponent = (props = {}) =>
+  render(
+    <NotificationsProvider {...requiredProps} {...props}>
+      {children}
+    </NotificationsProvider>
+  );
 
 describe('<NotificationsProvider />', () => {
   afterEach(cleanup);
 
   it('should render correctly', () => {
-    const { container: { firstChild } } = renderComponent();
+    const {
+      container: { firstChild },
+    } = renderComponent();
     expect(firstChild).toBeDefined();
     expect(firstChild).toMatchSnapshot();
   });
@@ -64,7 +67,9 @@ describe('<NotificationsProvider />', () => {
   });
 
   it('should render correctly with custom props', () => {
-    const { container: { firstChild } } = renderComponent(optionalProps);
+    const {
+      container: { firstChild },
+    } = renderComponent(optionalProps);
     expect(firstChild).toMatchSnapshot();
   });
 
@@ -92,7 +97,6 @@ describe('<NotificationsProvider />', () => {
     });
     expect(getAllByText('notification').length).toEqual(1);
   });
-
 
   it('should automatically dismiss notifications', () => {
     jest.useFakeTimers();

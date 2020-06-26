@@ -1,11 +1,6 @@
-import React, {
-  useLayoutEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import Notification from '../Notification/Notification';
-
 
 const propTypes = {
   children: PropTypes.node.isRequired,

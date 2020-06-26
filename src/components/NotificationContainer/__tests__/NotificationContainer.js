@@ -4,7 +4,7 @@ import '@testing-library/jest-dom/extend-expect';
 
 import NotificationContainer from '../NotificationContainer';
 
-const children = (<p>test</p>);
+const children = <p>test</p>;
 const props = {
   position: ['20px', '30px', 'auto', 'auto'],
   isVisible: true,
@@ -13,23 +13,25 @@ const props = {
   slideFromSide: 'left',
 };
 
-const renderComponent = () => render(
-  <NotificationContainer {...props}>
-    {children}
-  </NotificationContainer>,
-);
+const renderComponent = () =>
+  render(<NotificationContainer {...props}>{children}</NotificationContainer>);
 
 describe('<NotificationsContainer />', () => {
   afterEach(cleanup);
 
   it('should render correctly', () => {
-    const { container: { firstChild } } = renderComponent();
+    const {
+      container: { firstChild },
+    } = renderComponent();
     expect(firstChild).toBeDefined();
     expect(firstChild).toMatchSnapshot();
   });
 
   it('should have children', () => {
-    const { container: { firstChild }, getByText } = renderComponent();
+    const {
+      container: { firstChild },
+      getByText,
+    } = renderComponent();
     const childrenElement = getByText('test');
     expect(firstChild).toContainElement(childrenElement);
   });

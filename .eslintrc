@@ -5,11 +5,8 @@
     "browser": true,
     "jest": true
   },
-  "extends": "airbnb",
-  "plugins": [
-    "react",
-    "react-hooks"
-  ],
+  "extends": ["airbnb", "prettier"],
+  "plugins": ["react", "react-hooks", "prettier"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -24,20 +21,13 @@
     "import/prefer-default-export": "off",
     "import/no-named-as-default": "off",
     "react/forbid-prop-types": "off",
-    "object-curly-newline": [
+    "react/jsx-props-no-spreading": "off",
+    "prettier/prettier": [
       "error",
       {
-        "ImportDeclaration": {
-          "multiline": true,
-          "minProperties": 4
-        }
-      }
-    ],
-    "quotes": [
-      "error",
-      "single",
-      {
-        "allowTemplateLiterals": true
+        "tabWidth": 2,
+        "singleQuote": true,
+        "trailingComma": "es5"
       }
     ]
   }
