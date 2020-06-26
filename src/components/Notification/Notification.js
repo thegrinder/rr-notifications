@@ -1,41 +1,54 @@
-import styled from 'styled-components';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import { convertToCssDuration, getAnimatedMargin } from '../../helpers/utils';
 import {
-  horizontalShow,
-  horizontalHide,
-  verticalShow,
-  verticalHide,
-} from '../../animations/animations';
+  convertToCssDuration,
+  getAnimatedMargin,
+  capitalize,
+} from '../../helpers/utils';
 
 const propTypes = {
-  isVisible: PropTypes.bool.isRequired,
-  notificationHeight: PropTypes.number.isRequired,
+  children: PropTypes.node.isRequired,
   position: PropTypes.array.isRequired,
+  isVisible: PropTypes.bool.isRequired,
   animationDuration: PropTypes.number.isRequired,
   animationEasing: PropTypes.string.isRequired,
-  slideFromSide: PropTypes.string.isRequired,
 };
 
-const Notification = styled.div`
-  position: relative;
-  z-index: ${(props) => (props.isVisible ? 999999 : -1)};
-  animation: ${({ isVisible, position, slideFromSide, notificationHeight }) => {
-    const animatedMargin = getAnimatedMargin(position);
-    if (slideFromSide) {
-      return isVisible
-        ? horizontalShow(notificationHeight, animatedMargin, slideFromSide)
-        : horizontalHide(notificationHeight, animatedMargin, slideFromSide);
+const Notification = ({
+  children,
+  position,
+  isVisible,
+  animationDuration,
+  animationEasing,
+}) => {
+  const notificationRef = useRef(null);
+  const [height, updateHeight] = useState(0);
+
+  useLayoutEffect(() => {
+    if (notificationRef.current) {
+      updateHeight(notificationRef.current.clientHeight);
     }
-    return isVisible
-      ? verticalShow(notificationHeight, animatedMargin)
-      : verticalHide(notificationHeight, animatedMargin);
-  }};
-  animation-timing-function: ${(props) => props.animationEasing};
-  animation-duration: ${(props) =>
-    convertToCssDuration(props.animationDuration)};
-  animation-fill-mode: forwards;
-`;
+  }, [notificationRef]);
+
+  return (
+    <div
+      ref={notificationRef}
+      style={{
+        position: 'relative',
+        zIndex: isVisible ? 999999 : -1,
+        transitionProperty: `margin-${getAnimatedMargin(position)}, opacity`,
+        transitionDuration: convertToCssDuration(animationDuration),
+        transitionTimingFunction: animationEasing,
+        [`margin${capitalize(getAnimatedMargin(position))}`]: isVisible
+          ? 0
+          : `${-height}px`,
+        opacity: isVisible ? 1 : 0,
+      }}
+    >
+      {children}
+    </div>
+  );
+};
 
 Notification.propTypes = propTypes;
 

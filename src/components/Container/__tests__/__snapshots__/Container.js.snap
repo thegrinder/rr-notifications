@@ -2,7 +2,7 @@
 
 exports[`<Container /> should render correctly 1`] = `
 <div
-  class="sc-AxjAm jyybXN"
+  style="position: fixed; display: flex; z-index: 999999; height: 0px; flex-direction: column; top: 20px; right: 30px;"
 >
   <p>
     test

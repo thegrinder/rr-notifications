@@ -10,8 +10,6 @@ route: '/'
 [![Build Status](https://travis-ci.org/thegrinder/rr-notifications.svg?branch=master)](https://travis-ci.org/thegrinder/rr-notifications)&nbsp;
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)&nbsp;
 [![Codecov](https://img.shields.io/codecov/c/github/thegrinder/rr-notifications.svg)](https://codecov.io/gh/thegrinder/rr-notifications)&nbsp;
-[![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)&nbsp;
-
 
 rr-notifications is a flexible and customizable react notification system. Create your own notification component with the content you want,
 style it however you want and with technology of your choice and it will work.
@@ -19,18 +17,17 @@ style it however you want and with technology of your choice and it will work.
 ### Example
 
 import { Playground } from 'docz';
-import { NotificationsProvider, useNotification } from './'
-
+import { NotificationsProvider, useNotification } from './';
 
 ```js
 import React from 'react';
 import { useNotification } from 'rr-notifications';
 
 const Demo = () => {
-  const { showNotification } = useNotification();
+  const { addNotification } = useNotification();
   return (
     <div>
-      <button onClick={() => showNotification({ text: 'notification' })}>
+      <button onClick={() => addNotification({ text: 'notification' })}>
         Add notification
       </button>
     </div>
@@ -44,19 +41,18 @@ import Demo from 'path/to/demo';
 
 const App = () => (
   <NotificationsProvider
-    position={[ '80px', '80px', 'auto', 'auto']}
+    position={['80px', '80px', 'auto', 'auto']}
     animationDuration={400}
     animationEasing="ease"
-    slideFromSide="right"
     renderNotification={({ removeNotification, payload }) => (
-      <div style={{
-        backgroundColor: '#333',
-        padding: '16px',
-        marginBottom: '8px',
-      }}>
-        <p style={{ color: '#fff' }}>
-          {payload.text}
-        </p>
+      <div
+        style={{
+          backgroundColor: '#333',
+          padding: '16px',
+          marginBottom: '8px',
+        }}
+      >
+        <p style={{ color: '#fff' }}>{payload.text}</p>
         <button type="button" onClick={removeNotification}>
           Click to close
         </button>
@@ -67,13 +63,14 @@ const App = () => (
   </NotificationsProvider>
 );
 ```
+
 <Playground>
   {() => {
     const Demo = () => {
-      const { showNotification } = useNotification();
+      const { addNotification } = useNotification();
       return (
         <div>
-          <button onClick={() => showNotification({ text: 'notification' })}>
+          <button onClick={() => addNotification({ text: 'notification' })}>
             Add notification
           </button>
         </div>
@@ -81,19 +78,18 @@ const App = () => (
     };
     const App = () => (
       <NotificationsProvider
-        position={[ '80px', '80px', 'auto', 'auto']}
+        position={['80px', '80px', 'auto', 'auto']}
         animationDuration={400}
         animationEasing="ease"
-        slideFromSide="right"
         renderNotification={({ removeNotification, payload }) => (
-          <div style={{
-            backgroundColor: '#333',
-            padding: '16px',
-            marginBottom: '8px',
-          }}>
-            <p style={{ color: '#fff' }}>
-              {payload.text}
-            </p>
+          <div
+            style={{
+              backgroundColor: '#333',
+              padding: '16px',
+              marginBottom: '8px',
+            }}
+          >
+            <p style={{ color: '#fff' }}>{payload.text}</p>
             <button type="button" onClick={removeNotification}>
               Click to close
             </button>
@@ -103,6 +99,6 @@ const App = () => (
         <Demo />
       </NotificationsProvider>
     );
-    return <App />
+    return <App />;
   }}
 </Playground>

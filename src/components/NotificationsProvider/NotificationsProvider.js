@@ -8,7 +8,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import Container from '../Container/Container';
-import NotificationContainer from '../NotificationContainer/NotificationContainer';
+import Notification from '../Notification/Notification';
 
 export const NotificationsContext = createContext({});
 
@@ -25,11 +25,6 @@ const propTypes = {
   animationEasing: PropTypes.string,
   /** Time in miliseconds after which the notification is automatically dismissed */
   dismissAfter: PropTypes.number,
-  /**
-   * Horizontal direction which notification appears from. If not provided,
-   * the notification will appear from top or bottom, depending on position prop
-   * */
-  slideFromSide: PropTypes.string,
 };
 
 const defaultProps = {
@@ -37,7 +32,6 @@ const defaultProps = {
   animationDuration: 400,
   animationEasing: 'ease',
   dismissAfter: 6000,
-  slideFromSide: '',
 };
 
 const NotificationsProvider = ({
@@ -46,11 +40,11 @@ const NotificationsProvider = ({
   position,
   animationDuration,
   animationEasing,
-  slideFromSide,
   dismissAfter,
 }) => {
   const automaticDismissalTimers = useRef({});
   const manualDismissalTimers = useRef({});
+  const appearanceDelayTimers = useRef({});
 
   const [notifications, updateNotifications] = useState({});
 
@@ -79,6 +73,7 @@ const NotificationsProvider = ({
   const removeNotification = useCallback(
     (id) => () => {
       clearTimeout(automaticDismissalTimers.current[id]);
+      clearTimeout(appearanceDelayTimers.current[id]);
       hideNotification(id);
       manualDismissalTimers.current[id] = setTimeout(() => {
         unmountNotification(id);
@@ -87,10 +82,9 @@ const NotificationsProvider = ({
     [animationDuration]
   );
 
-  const showNotification = useCallback(
-    (payload = {}) =>
+  const mountNotification = useCallback(
+    (id, payload) => {
       updateNotifications((state) => {
-        const id = Date.now().toString();
         automaticDismissalTimers.current[id] = setTimeout(() => {
           removeNotification(id)();
         }, dismissAfter);
@@ -98,18 +92,40 @@ const NotificationsProvider = ({
           ...state,
           [id]: {
             id,
-            isVisible: true,
+            isVisible: false,
             payload,
           },
         };
-      }),
+      });
+    },
     [dismissAfter, removeNotification]
+  );
+
+  const showNotification = (id) =>
+    updateNotifications((state) => ({
+      ...state,
+      [id]: {
+        ...state[id],
+        isVisible: true,
+      },
+    }));
+
+  const addNotification = useCallback(
+    (payload = {}) => {
+      const id = Date.now().toString();
+      mountNotification(id, payload);
+      appearanceDelayTimers.current[id] = setTimeout(() => {
+        showNotification(id);
+      }, 100);
+    },
+    [mountNotification]
   );
 
   const clearAllTimeouts = () => {
     [
       ...Object.values(manualDismissalTimers.current),
       ...Object.values(automaticDismissalTimers.current),
+      ...Object.values(appearanceDelayTimers.current),
     ].forEach((timeout) => clearTimeout(timeout));
   };
 
@@ -117,22 +133,21 @@ const NotificationsProvider = ({
 
   const value = useMemo(
     () => ({
-      showNotification,
+      addNotification,
       removeNotification,
     }),
-    [removeNotification, showNotification]
+    [removeNotification, addNotification]
   );
 
   return (
     <NotificationsContext.Provider value={value}>
       <Container position={position}>
         {Object.values(notifications).map(({ id, payload, isVisible }) => (
-          <NotificationContainer
+          <Notification
             key={id}
             position={position}
             animationDuration={animationDuration}
             animationEasing={animationEasing}
-            slideFromSide={slideFromSide}
             dismissAfter={dismissAfter}
             isVisible={isVisible}
           >
@@ -140,7 +155,7 @@ const NotificationsProvider = ({
               removeNotification: removeNotification(id),
               payload,
             })}
-          </NotificationContainer>
+          </Notification>
         ))}
       </Container>
       {children}

@@ -19,19 +19,10 @@ const reactDOMExternal = {
   amd: 'react-dom',
 };
 
-const styledComponentsExternal = {
-  root: 'styled',
-  commonjs2: 'styled-components',
-  commonjs: 'styled-components',
-  amd: 'styled-components',
-};
-
 const prodConfig = {
   mode: 'production',
   devtool: 'source-map',
-  entry: [
-    PATHS.src,
-  ],
+  entry: [PATHS.src],
   output: {
     path: PATHS.build,
     filename: 'index.js',
@@ -46,16 +37,13 @@ const prodConfig = {
       {
         test: /\.(js)$/,
         use: 'babel-loader',
-        exclude: [
-          /node_modules/,
-        ],
+        exclude: [/node_modules/],
       },
     ],
   },
   externals: {
     react: reactExternal,
     'react-dom': reactDOMExternal,
-    'styled-components': styledComponentsExternal,
   },
 };
 

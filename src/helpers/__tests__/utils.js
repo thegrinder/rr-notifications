@@ -5,18 +5,16 @@ import {
   getAnimatedMargin,
 } from '../utils';
 
-jest.mock('styled-components');
-
 describe('utils', () => {
   describe('convertToCssPosition', () => {
     it('should properly convert given position', () => {
       const testPosition = ['auto', 'auto', '30px', '30px'];
-      const expected = [
-        'top: auto;',
-        'right: auto;',
-        'bottom: 30px;',
-        'left: 30px;',
-      ];
+      const expected = {
+        bottom: '30px',
+        left: '30px',
+        right: 'auto',
+        top: 'auto',
+      };
       expect(convertToCssPosition(testPosition)).toEqual(expected);
     });
   });

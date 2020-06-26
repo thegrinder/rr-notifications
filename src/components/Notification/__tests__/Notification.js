@@ -4,33 +4,24 @@ import '@testing-library/jest-dom/extend-expect';
 
 import Notification from '../Notification';
 
-const testProps = {
-  isVisible: true,
-  notificationHeight: 40,
-  animationDuration: 400,
-  animationEasing: 'ease',
-  slideFromSide: 'left',
-  position: ['10px', '10px', 'auto', 'auto'],
-};
 const children = <p>test</p>;
-const renderComponent = (props = {}) =>
+const props = {
+  position: ['20px', '30px', 'auto', 'auto'],
+  isVisible: true,
+  animationDuration: 100,
+  animationEasing: 'ease',
+};
+
+const renderComponent = () =>
   render(<Notification {...props}>{children}</Notification>);
 
 describe('<Notification />', () => {
   afterEach(cleanup);
 
-  it('should render correctly if visible', () => {
+  it('should render correctly', () => {
     const {
       container: { firstChild },
-    } = renderComponent(testProps);
-    expect(firstChild).toBeDefined();
-    expect(firstChild).toMatchSnapshot();
-  });
-
-  it('should render correctly if not visible', () => {
-    const {
-      container: { firstChild },
-    } = renderComponent({ ...testProps, isVisible: false });
+    } = renderComponent();
     expect(firstChild).toBeDefined();
     expect(firstChild).toMatchSnapshot();
   });
@@ -39,7 +30,7 @@ describe('<Notification />', () => {
     const {
       container: { firstChild },
       getByText,
-    } = renderComponent(testProps);
+    } = renderComponent();
     const childrenElement = getByText('test');
     expect(firstChild).toContainElement(childrenElement);
   });
