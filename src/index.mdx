@@ -25,10 +25,10 @@ import React from 'react';
 import { useNotification } from 'rr-notifications';
 
 const Demo = () => {
-  const { showNotification } = useNotification();
+  const { addNotification } = useNotification();
   return (
     <div>
-      <button onClick={() => showNotification({ text: 'notification' })}>
+      <button onClick={() => addNotification({ text: 'notification' })}>
         Add notification
       </button>
     </div>
@@ -45,7 +45,6 @@ const App = () => (
     position={['80px', '80px', 'auto', 'auto']}
     animationDuration={400}
     animationEasing="ease"
-    slideFromSide="right"
     renderNotification={({ removeNotification, payload }) => (
       <div
         style={{
@@ -69,10 +68,10 @@ const App = () => (
 <Playground>
   {() => {
     const Demo = () => {
-      const { showNotification } = useNotification();
+      const { addNotification } = useNotification();
       return (
         <div>
-          <button onClick={() => showNotification({ text: 'notification' })}>
+          <button onClick={() => addNotification({ text: 'notification' })}>
             Add notification
           </button>
         </div>

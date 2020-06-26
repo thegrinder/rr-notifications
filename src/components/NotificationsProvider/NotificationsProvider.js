@@ -44,6 +44,7 @@ const NotificationsProvider = ({
 }) => {
   const automaticDismissalTimers = useRef({});
   const manualDismissalTimers = useRef({});
+  const appearanceDelayTimers = useRef({});
 
   const [notifications, updateNotifications] = useState({});
 
@@ -72,6 +73,7 @@ const NotificationsProvider = ({
   const removeNotification = useCallback(
     (id) => () => {
       clearTimeout(automaticDismissalTimers.current[id]);
+      clearTimeout(appearanceDelayTimers.current[id]);
       hideNotification(id);
       manualDismissalTimers.current[id] = setTimeout(() => {
         unmountNotification(id);
@@ -80,10 +82,9 @@ const NotificationsProvider = ({
     [animationDuration]
   );
 
-  const showNotification = useCallback(
-    (payload = {}) =>
+  const mountNotification = useCallback(
+    (id, payload) => {
       updateNotifications((state) => {
-        const id = Date.now().toString();
         automaticDismissalTimers.current[id] = setTimeout(() => {
           removeNotification(id)();
         }, dismissAfter);
@@ -91,18 +92,40 @@ const NotificationsProvider = ({
           ...state,
           [id]: {
             id,
-            isVisible: true,
+            isVisible: false,
             payload,
           },
         };
-      }),
+      });
+    },
     [dismissAfter, removeNotification]
+  );
+
+  const showNotification = (id) =>
+    updateNotifications((state) => ({
+      ...state,
+      [id]: {
+        ...state[id],
+        isVisible: true,
+      },
+    }));
+
+  const addNotification = useCallback(
+    (payload = {}) => {
+      const id = Date.now().toString();
+      mountNotification(id, payload);
+      appearanceDelayTimers.current[id] = setTimeout(() => {
+        showNotification(id);
+      }, 100);
+    },
+    [mountNotification]
   );
 
   const clearAllTimeouts = () => {
     [
       ...Object.values(manualDismissalTimers.current),
       ...Object.values(automaticDismissalTimers.current),
+      ...Object.values(appearanceDelayTimers.current),
     ].forEach((timeout) => clearTimeout(timeout));
   };
 
@@ -110,10 +133,10 @@ const NotificationsProvider = ({
 
   const value = useMemo(
     () => ({
-      showNotification,
+      addNotification,
       removeNotification,
     }),
-    [removeNotification, showNotification]
+    [removeNotification, addNotification]
   );
 
   return (

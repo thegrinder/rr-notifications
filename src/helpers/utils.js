@@ -11,3 +11,5 @@ export const getFlexDirection = (position) =>
 
 export const getAnimatedMargin = (position) =>
   position[COORDINATES.indexOf('top')] !== 'auto' ? 'top' : 'bottom';
+
+export const capitalize = (string) => string[0].toUpperCase() + string.slice(1);

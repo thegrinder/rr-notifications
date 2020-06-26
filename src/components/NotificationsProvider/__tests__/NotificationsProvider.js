@@ -8,9 +8,9 @@ import NotificationsProvider, {
 } from '../NotificationsProvider';
 
 const TestChild = () => {
-  const { showNotification } = useContext(NotificationsContext);
+  const { addNotification } = useContext(NotificationsContext);
   return (
-    <button type="button" onClick={() => showNotification()}>
+    <button type="button" onClick={() => addNotification()}>
       show notification
     </button>
   );

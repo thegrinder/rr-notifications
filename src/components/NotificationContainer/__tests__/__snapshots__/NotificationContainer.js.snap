@@ -2,7 +2,7 @@
 
 exports[`<NotificationsContainer /> should render correctly 1`] = `
 <div
-  class="sc-AxjAm hvaknr"
+  style="position: relative; z-index: 999999; transition-property: margin-top, opacity; transition-duration: 0.1s; transition-timing-function: ease; margin-top: 0px; opacity: 1;"
 >
   <p>
     test

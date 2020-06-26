@@ -10,7 +10,6 @@ const props = {
   isVisible: true,
   animationDuration: 100,
   animationEasing: 'ease',
-  slideFromSide: 'left',
 };
 
 const renderComponent = () =>
