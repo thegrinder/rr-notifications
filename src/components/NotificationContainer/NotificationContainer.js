@@ -8,7 +8,6 @@ const propTypes = {
   isVisible: PropTypes.bool.isRequired,
   animationDuration: PropTypes.number.isRequired,
   animationEasing: PropTypes.string.isRequired,
-  slideFromSide: PropTypes.string.isRequired,
 };
 
 const NotificationContainer = ({
@@ -17,7 +16,6 @@ const NotificationContainer = ({
   isVisible,
   animationDuration,
   animationEasing,
-  slideFromSide,
 }) => {
   const notificationRef = useRef(null);
   const [height, updateHeight] = useState(0);
@@ -34,7 +32,6 @@ const NotificationContainer = ({
       position={position}
       notificationHeight={height}
       isVisible={isVisible}
-      slideFromSide={slideFromSide}
       animationEasing={animationEasing}
       animationDuration={animationDuration}
     >

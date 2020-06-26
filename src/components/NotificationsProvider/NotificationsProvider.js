@@ -25,11 +25,6 @@ const propTypes = {
   animationEasing: PropTypes.string,
   /** Time in miliseconds after which the notification is automatically dismissed */
   dismissAfter: PropTypes.number,
-  /**
-   * Horizontal direction which notification appears from. If not provided,
-   * the notification will appear from top or bottom, depending on position prop
-   * */
-  slideFromSide: PropTypes.string,
 };
 
 const defaultProps = {
@@ -37,7 +32,6 @@ const defaultProps = {
   animationDuration: 400,
   animationEasing: 'ease',
   dismissAfter: 6000,
-  slideFromSide: '',
 };
 
 const NotificationsProvider = ({
@@ -46,7 +40,6 @@ const NotificationsProvider = ({
   position,
   animationDuration,
   animationEasing,
-  slideFromSide,
   dismissAfter,
 }) => {
   const automaticDismissalTimers = useRef({});
@@ -132,7 +125,6 @@ const NotificationsProvider = ({
             position={position}
             animationDuration={animationDuration}
             animationEasing={animationEasing}
-            slideFromSide={slideFromSide}
             dismissAfter={dismissAfter}
             isVisible={isVisible}
           >
