@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { convertToCssPosition, getFlexDirection } from '../../helpers/utils';
 
@@ -6,14 +6,19 @@ const propTypes = {
   position: PropTypes.array.isRequired,
 };
 
-const Container = styled.div`
-  position: fixed;
-  display: flex;
-  z-index: 999999;
-  height: 0;
-  flex-direction: ${(props) => getFlexDirection(props.position)};
-  ${(props) => convertToCssPosition(props.position)}
-`;
+const Container = ({ position, ...rest }) => (
+  <div
+    style={{
+      position: 'fixed',
+      display: 'flex',
+      zIndex: 999999,
+      height: 0,
+      flexDirection: getFlexDirection(position),
+      ...convertToCssPosition(position),
+    }}
+    {...rest}
+  />
+);
 
 Container.propTypes = propTypes;
 
