@@ -2,7 +2,7 @@ import React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import NotificationContainer from '../NotificationContainer';
+import Notification from '../Notification';
 
 const children = <p>test</p>;
 const props = {
@@ -13,9 +13,9 @@ const props = {
 };
 
 const renderComponent = () =>
-  render(<NotificationContainer {...props}>{children}</NotificationContainer>);
+  render(<Notification {...props}>{children}</Notification>);
 
-describe('<NotificationsContainer />', () => {
+describe('<Notification />', () => {
   afterEach(cleanup);
 
   it('should render correctly', () => {

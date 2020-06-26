@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<NotificationsContainer /> should render correctly 1`] = `
+exports[`<Notification /> should render correctly 1`] = `
 <div
   style="position: relative; z-index: 999999; transition-property: margin-top, opacity; transition-duration: 0.1s; transition-timing-function: ease; margin-top: 0px; opacity: 1;"
 >

@@ -14,7 +14,7 @@ const propTypes = {
   animationEasing: PropTypes.string.isRequired,
 };
 
-const NotificationContainer = ({
+const Notification = ({
   children,
   position,
   isVisible,
@@ -50,6 +50,6 @@ const NotificationContainer = ({
   );
 };
 
-NotificationContainer.propTypes = propTypes;
+Notification.propTypes = propTypes;
 
-export default NotificationContainer;
+export default Notification;

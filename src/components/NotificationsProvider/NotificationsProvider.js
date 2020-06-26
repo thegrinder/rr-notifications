@@ -8,7 +8,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import Container from '../Container/Container';
-import NotificationContainer from '../NotificationContainer/NotificationContainer';
+import Notification from '../Notification/Notification';
 
 export const NotificationsContext = createContext({});
 
@@ -143,7 +143,7 @@ const NotificationsProvider = ({
     <NotificationsContext.Provider value={value}>
       <Container position={position}>
         {Object.values(notifications).map(({ id, payload, isVisible }) => (
-          <NotificationContainer
+          <Notification
             key={id}
             position={position}
             animationDuration={animationDuration}
@@ -155,7 +155,7 @@ const NotificationsProvider = ({
               removeNotification: removeNotification(id),
               payload,
             })}
-          </NotificationContainer>
+          </Notification>
         ))}
       </Container>
       {children}
