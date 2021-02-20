@@ -18,11 +18,12 @@
     "docz:dev": "docz dev",
     "lint": "eslint './src/**/*.js' --fix",
     "postinstall": "husky install",
-    "prepublishOnly": "pinst --disable && npm run production",
     "postpublish": "pinst --enable",
-    "production": "webpack",
+    "prepublishOnly": "pinst --disable && npm run production",
+    "production": "tsc",
     "semantic-release": "semantic-release",
-    "test": "jest"
+    "test": "jest",
+    "typecheck": "tsc --noEmit"
   },
   "config": {
     "commitizen": {
@@ -45,23 +46,24 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.12.17",
-    "@babel/plugin-proposal-object-rest-spread": "^7.12.13",
     "@babel/preset-env": "^7.12.17",
     "@babel/preset-react": "^7.12.13",
+    "@babel/preset-typescript": "^7.12.17",
     "@semantic-release/commit-analyzer": "^8.0.1",
     "@semantic-release/git": "^9.0.0",
     "@semantic-release/npm": "^7.0.10",
     "@semantic-release/release-notes-generator": "^9.0.1",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
-    "babel-eslint": "^10.1.0",
-    "babel-loader": "^8.2.2",
+    "@types/jest": "^26.0.20",
+    "@types/testing-library__jest-dom": "^5.9.5",
+    "@typescript-eslint/eslint-plugin": "^4.15.1",
+    "@typescript-eslint/parser": "^4.15.1",
     "commitizen": "^4.2.3",
     "cz-conventional-changelog": "^3.3.0",
     "docz": "^2.3.1",
     "docz-theme-default": "^1.2.0",
     "eslint": "^7.20.0",
-    "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
@@ -76,9 +78,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "semantic-release": "^17.3.9",
-    "webpack": "4.46.0",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.2"
+    "typescript": "^4.1.5"
   },
   "peerDependencies": {
     "react": ">=16.x"

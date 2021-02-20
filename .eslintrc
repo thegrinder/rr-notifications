@@ -1,12 +1,26 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "env": {
     "es6": true,
     "browser": true,
     "jest": true
   },
-  "extends": ["airbnb", "prettier"],
-  "plugins": ["react", "react-hooks", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "plugin:react/recommended",
+    "prettier"
+  ],
+  "plugins": [
+    "react",
+    "react-hooks",
+    "import",
+    "@typescript-eslint",
+    "prettier"
+  ],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -15,13 +29,7 @@
   "rules": {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "react/jsx-uses-react": "error",
-    "react/jsx-filename-extension": "off",
-    "no-underscore-dangle": "off",
-    "import/prefer-default-export": "off",
-    "import/no-named-as-default": "off",
-    "react/forbid-prop-types": "off",
-    "react/jsx-props-no-spreading": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
     "prettier/prettier": [
       "error",
       {
