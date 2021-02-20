@@ -3,12 +3,13 @@ import {
   convertToCssDuration,
   getFlexDirection,
   getAnimatedMargin,
+  Position,
 } from '../utils';
 
 describe('utils', () => {
   describe('convertToCssPosition', () => {
     it('should properly convert given position', () => {
-      const testPosition = ['auto', 'auto', '30px', '30px'];
+      const testPosition: Position = ['auto', 'auto', '30px', '30px'];
       const expected = {
         bottom: '30px',
         left: '30px',

@@ -6,12 +6,12 @@ import { NotificationsProvider } from '../NotificationsProvider';
 import { NotificationsContext } from '../NotificationContext';
 
 const TestChild = () => {
-  const { addNotification } = useContext(NotificationsContext);
-  return (
-    <button type="button" onClick={() => addNotification({})}>
+  const context = useContext(NotificationsContext);
+  return context ? (
+    <button type="button" onClick={() => context.addNotification({})}>
       show notification
     </button>
-  );
+  ) : null;
 };
 
 const children = <TestChild />;
