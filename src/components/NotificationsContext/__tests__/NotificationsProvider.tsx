@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
 import { render, cleanup, fireEvent, act } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
@@ -17,29 +16,23 @@ const TestChild = () => {
 
 const children = <TestChild />;
 
-const Notification = ({ removeNotification }) => (
+const Notification = ({
+  removeNotification,
+}: {
+  removeNotification: () => void;
+}) => (
   <div>
-    <button type="button" onClick={() => removeNotification('test')}>
+    <button type="button" onClick={() => removeNotification()}>
       notification
     </button>
   </div>
 );
-
-Notification.propTypes = {
-  removeNotification: PropTypes.func.isRequired,
-};
 
 const requiredProps = {
   renderNotification: Notification,
 };
 
 const animationDuration = 400;
-
-const optionalProps = {
-  animationDuration,
-  position: ['40px', '40px', 'auto', 'auto'],
-  animationEasing: 'ease',
-};
 
 const renderComponent = (props = {}) =>
   render(

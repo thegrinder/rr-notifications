@@ -11,7 +11,7 @@ import { Notification } from '../Notification/Notification';
 import { Position } from '../../helpers/utils';
 import { NotificationsContext } from './NotificationContext';
 
-type RemoveNotification = ({
+export type RemoveNotification = ({
   removeNotification,
   payload,
 }: {
