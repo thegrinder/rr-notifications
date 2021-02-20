@@ -32,10 +32,13 @@ const prodConfig = {
     umdNamedDefine: true,
     globalObject: 'this',
   },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.json'],
+  },
   module: {
     rules: [
       {
-        test: /\.(js)$/,
+        test: /\.(ts|js)x?$/,
         use: 'babel-loader',
         exclude: [/node_modules/],
       },
