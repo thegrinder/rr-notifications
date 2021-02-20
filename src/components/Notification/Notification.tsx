@@ -14,7 +14,7 @@ type NotificationProps = {
   children: ReactNode;
 };
 
-const Notification = ({
+export const Notification = ({
   position,
   isVisible,
   animationDuration,
@@ -49,5 +49,3 @@ const Notification = ({
     </div>
   );
 };
-
-export default Notification;
