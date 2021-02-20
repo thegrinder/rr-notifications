@@ -2,6 +2,7 @@
     "include": ["./src/**/*"],
     "exclude": [
       "node_modules",
+      "./src/**/__tests__/**/*",
     ],
     "compilerOptions": {
       "outDir": "dist",
@@ -9,7 +10,7 @@
       "declarationDir": "dist",
       "target": "ES2019",
       "module": "commonjs",
-      "lib": ["ES2019"],
+      "lib": ["dom"],
       "strict": true,
       "sourceMap": true,
       "jsx": "react",
@@ -19,6 +20,7 @@
       "allowSyntheticDefaultImports": true,
       "isolatedModules": true,
       "downlevelIteration": true,
-      "forceConsistentCasingInFileNames": true
+      "forceConsistentCasingInFileNames": true,
+      "allowJs": true
     }
   }
