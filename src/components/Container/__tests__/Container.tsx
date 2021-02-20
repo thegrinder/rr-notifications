@@ -4,10 +4,14 @@ import '@testing-library/jest-dom/extend-expect';
 
 import Container from '../Container';
 
-const position = ['20px', '30px', 'auto', 'auto'];
 const children = <p>test</p>;
-const renderComponent = (props = {}) =>
-  render(<Container {...props}>{children}</Container>);
+
+const renderComponent = () =>
+  render(
+    <Container position={['20px', '30px', 'auto', 'auto']}>
+      {children}
+    </Container>
+  );
 
 describe('<Container />', () => {
   afterEach(cleanup);
@@ -15,16 +19,15 @@ describe('<Container />', () => {
   it('should render correctly', () => {
     const {
       container: { firstChild },
-    } = renderComponent({ position });
+    } = renderComponent();
     expect(firstChild).toBeDefined();
-    expect(firstChild).toMatchSnapshot();
   });
 
   it('should have children', () => {
     const {
       container: { firstChild },
       getByText,
-    } = renderComponent({ position });
+    } = renderComponent();
     const childrenElement = getByText('test');
     expect(firstChild).toContainElement(childrenElement);
   });
