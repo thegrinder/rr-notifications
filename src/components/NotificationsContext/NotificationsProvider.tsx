@@ -1,54 +1,63 @@
 import React, {
-  createContext,
   useCallback,
   useState,
   useRef,
   useEffect,
   useMemo,
+  ReactNode,
 } from 'react';
-import PropTypes from 'prop-types';
 import Container from '../Container/Container';
-import Notification from '../Notification/Notification';
+import { Notification } from '../Notification/Notification';
+import { Position } from '../../helpers/utils';
+import { NotificationsContext } from './NotificationContext';
 
-export const NotificationsContext = createContext({});
+type RemoveNotification = ({
+  removeNotification,
+  payload,
+}: {
+  removeNotification: () => void;
+  payload: any;
+}) => ReactNode;
 
-const propTypes = {
+type NotificationsProviderProps = {
   /** Children */
-  children: PropTypes.node.isRequired,
+  children: ReactNode;
   /** Render prop which passes down removeNotification function and notification payload */
-  renderNotification: PropTypes.func.isRequired,
+  renderNotification: RemoveNotification;
   /** Fixed position where all notifications are displayed */
-  position: PropTypes.array,
+  position?: Position;
   /** Duration of the show and hide animations in miliseconds */
-  animationDuration: PropTypes.number,
+  animationDuration?: number;
   /** Animation timing function / cubic-bezier */
-  animationEasing: PropTypes.string,
+  animationEasing?: string;
   /** Time in miliseconds after which the notification is automatically dismissed */
-  dismissAfter: PropTypes.number,
+  dismissAfter?: number;
 };
 
-const defaultProps = {
-  position: ['40px', '40px', 'auto', 'auto'],
-  animationDuration: 400,
-  animationEasing: 'ease',
-  dismissAfter: 6000,
-};
-
-const NotificationsProvider = ({
+export const NotificationsProvider = ({
   children,
   renderNotification,
-  position,
-  animationDuration,
-  animationEasing,
-  dismissAfter,
-}) => {
-  const automaticDismissalTimers = useRef({});
-  const manualDismissalTimers = useRef({});
-  const appearanceDelayTimers = useRef({});
+  position = ['40px', '40px', 'auto', 'auto'],
+  animationDuration = 400,
+  animationEasing = 'ease',
+  dismissAfter = 6000,
+}: NotificationsProviderProps) => {
+  const automaticDismissalTimers = useRef<Record<string, NodeJS.Timeout>>({});
+  const manualDismissalTimers = useRef<Record<string, NodeJS.Timeout>>({});
+  const appearanceDelayTimers = useRef<Record<string, NodeJS.Timeout>>({});
 
-  const [notifications, updateNotifications] = useState({});
+  const [notifications, updateNotifications] = useState<
+    Record<
+      string,
+      {
+        id: string;
+        isVisible: boolean;
+        payload: any;
+      }
+    >
+  >({});
 
-  const hideNotification = (id) =>
+  const hideNotification = (id: string) =>
     updateNotifications((state) => ({
       ...state,
       [id]: {
@@ -57,7 +66,7 @@ const NotificationsProvider = ({
       },
     }));
 
-  const unmountNotification = (id) =>
+  const unmountNotification = (id: string) =>
     updateNotifications((state) =>
       Object.keys(state)
         .filter((notificationId) => notificationId !== id)
@@ -101,7 +110,7 @@ const NotificationsProvider = ({
     [dismissAfter, removeNotification]
   );
 
-  const showNotification = (id) =>
+  const showNotification = (id: string) =>
     updateNotifications((state) => ({
       ...state,
       [id]: {
@@ -148,7 +157,6 @@ const NotificationsProvider = ({
             position={position}
             animationDuration={animationDuration}
             animationEasing={animationEasing}
-            dismissAfter={dismissAfter}
             isVisible={isVisible}
           >
             {renderNotification({
@@ -162,8 +170,3 @@ const NotificationsProvider = ({
     </NotificationsContext.Provider>
   );
 };
-
-NotificationsProvider.propTypes = propTypes;
-NotificationsProvider.defaultProps = defaultProps;
-
-export default NotificationsProvider;

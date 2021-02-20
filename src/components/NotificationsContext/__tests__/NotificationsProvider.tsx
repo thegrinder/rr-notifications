@@ -3,14 +3,13 @@ import PropTypes from 'prop-types';
 import { render, cleanup, fireEvent, act } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import NotificationsProvider, {
-  NotificationsContext,
-} from '../NotificationsProvider';
+import { NotificationsProvider } from '../NotificationsProvider';
+import { NotificationsContext } from '../NotificationContext';
 
 const TestChild = () => {
   const { addNotification } = useContext(NotificationsContext);
   return (
-    <button type="button" onClick={() => addNotification()}>
+    <button type="button" onClick={() => addNotification({})}>
       show notification
     </button>
   );
@@ -20,7 +19,7 @@ const children = <TestChild />;
 
 const Notification = ({ removeNotification }) => (
   <div>
-    <button type="button" onClick={() => removeNotification()}>
+    <button type="button" onClick={() => removeNotification('test')}>
       notification
     </button>
   </div>
@@ -57,7 +56,6 @@ describe('<NotificationsProvider />', () => {
       container: { firstChild },
     } = renderComponent();
     expect(firstChild).toBeDefined();
-    expect(firstChild).toMatchSnapshot();
   });
 
   it('should have children', () => {
@@ -66,17 +64,10 @@ describe('<NotificationsProvider />', () => {
     expect(container).toContainElement(childrenElement);
   });
 
-  it('should render correctly with custom props', () => {
-    const {
-      container: { firstChild },
-    } = renderComponent(optionalProps);
-    expect(firstChild).toMatchSnapshot();
-  });
-
   it('should properly handle opening and manually closing notifications', () => {
     jest.useFakeTimers();
 
-    const { container, getAllByText, getByText } = renderComponent();
+    const { getAllByText, getByText } = renderComponent();
     const button = getByText('show notification');
 
     act(() => {
@@ -88,7 +79,6 @@ describe('<NotificationsProvider />', () => {
     });
 
     expect(getAllByText('notification').length).toEqual(2);
-    expect(container).toMatchSnapshot();
     act(() => {
       fireEvent.click(getAllByText('notification')[0]);
     });

@@ -1,27 +1,27 @@
-import React, { useLayoutEffect, useRef, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useLayoutEffect, useRef, useState, ReactNode } from 'react';
 import {
   convertToCssDuration,
   getAnimatedMargin,
   capitalize,
+  Position,
 } from '../../helpers/utils';
 
-const propTypes = {
-  children: PropTypes.node.isRequired,
-  position: PropTypes.array.isRequired,
-  isVisible: PropTypes.bool.isRequired,
-  animationDuration: PropTypes.number.isRequired,
-  animationEasing: PropTypes.string.isRequired,
+type NotificationProps = {
+  position: Position;
+  isVisible: boolean;
+  animationDuration: number;
+  animationEasing: string;
+  children: ReactNode;
 };
 
-const Notification = ({
-  children,
+export const Notification = ({
   position,
   isVisible,
   animationDuration,
   animationEasing,
-}) => {
-  const notificationRef = useRef(null);
+  children,
+}: NotificationProps) => {
+  const notificationRef = useRef<HTMLDivElement>(null);
   const [height, updateHeight] = useState(0);
 
   useLayoutEffect(() => {
@@ -49,7 +49,3 @@ const Notification = ({
     </div>
   );
 };
-
-Notification.propTypes = propTypes;
-
-export default Notification;
